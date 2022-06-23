@@ -1,14 +1,14 @@
 {
-    "name": "Hikka",
-    "description": "Developer-friendly Telegram userbot",
-    "logo": "https://i.imgur.com/Nz70F93.jpeg",
+    "name": "UModx",
+    "description": "UModules production",
+    "logo": "http://f0664355.xsph.ru/img/umodx_avatar.png",
     "keywords": [
         "telegram",
         "userbot"
     ],
     "env": {
         "heroku_api_token": {
-            "description": "Heroku API Token. You can get one at https://dashboard.heroku.com/account"
+            "description": "Heroku API Token kiriting: https://dashboard.heroku.com/account"
         }
     },
     "addons": [
