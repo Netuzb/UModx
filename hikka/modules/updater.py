@@ -1,29 +1,3 @@
-#    Friendly Telegram (telegram userbot)
-#    Copyright (C) 2018-2021 The Authors
-
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-# █ █ ▀ █▄▀ ▄▀█ █▀█ ▀    ▄▀█ ▀█▀ ▄▀█ █▀▄▀█ ▄▀█
-# █▀█ █ █ █ █▀█ █▀▄ █ ▄  █▀█  █  █▀█ █ ▀ █ █▀█
-#
-#              © Copyright 2022
-#
-#          https://t.me/hikariatama
-#
-# 🔒 Licensed under the GNU GPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import asyncio
 import atexit
 import contextlib
@@ -82,35 +56,6 @@ class UpdaterMod(loader.Module):
         "heroku_update": "♓️ <b>Deploying new version to Heroku...\nThis might take some time</b>",
         "full_success": "✅ <b>Userbot is fully loaded! {}</b>\n<i>Full restart took {}s</i>",
         "heroku_psycopg2_unavailable": "♓️🚫 <b>PostgreSQL database is not available.</b>\n\n<i>Do not report this error to support chat, as it has nothing to do with Hikka. Try changing database to Redis</i>",
-    }
-
-    strings_ru = {
-        "source": "ℹ️ <b>Исходный код можно прочитать</b> <a href='{}'>здесь</a>",
-        "restarting_caption": "🔄 <b>Перезагрузка...</b>",
-        "downloading": "🕐 <b>Скачивание обновлений...</b>",
-        "installing": "🕐 <b>Установка обновлений...</b>",
-        "success": "⏳ <b>Перезагрузка успешна! {}</b>\n<i>Но модули еще загружаются...</i>\n<i>Перезагрузка заняла {} сек</i>",
-        "full_success": "✅ <b>Юзербот полностью загружен! {}</b>\n<i>Полная перезагрузка заняла {} сек</i>",
-        "origin_cfg_doc": "Ссылка, из которой будут загружаться обновления",
-        "btn_restart": "🔄 Перезагрузиться",
-        "btn_update": "🧭 Обновиться",
-        "restart_confirm": "🔄 <b>Ты уверен, что хочешь перезагрузиться?</b>",
-        "update_confirm": (
-            "🧭 <b>Ты уверен, что хочешь обновиться??\n\n"
-            '<a href="https://github.com/hikariatama/Hikka/commit/{}">{}</a> ⤑ '
-            '<a href="https://github.com/hikariatama/Hikka/commit/{}">{}</a></b>'
-        ),
-        "no_update": "🚸 <b>У тебя последняя версия. Обновиться принудительно?</b>",
-        "cancel": "🚫 Отмена",
-        "_cmd_doc_restart": "Перезагружает юзербот",
-        "_cmd_doc_download": "Скачивает обновления",
-        "_cmd_doc_update": "Обновляет юзербот",
-        "_cmd_doc_source": "Ссылка на исходный код проекта",
-        "_cls_doc": "Обновляет юзербот",
-        "lavhost_restart": "✌️ <b>Твой lavHost перезагружается...\n&gt;///&lt;</b>",
-        "lavhost_update": "✌️ <b>Твой lavHost обновляется...\n&gt;///&lt;</b>",
-        "heroku_update": "♓️ <b>Обновляю Heroku...\nЭто может занять некоторое время</b>",
-        "heroku_psycopg2_unavailable": "♓️🚫 <b>PostgreSQL база данных не доступна.</b>\n\n<i>Не обращайтесь к поддержке чата, так как эта проблема не вызвана Hikka. Попробуйте изменить базу данных на Redis</i>",
     }
 
     def __init__(self):
