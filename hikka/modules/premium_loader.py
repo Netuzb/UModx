@@ -43,27 +43,27 @@ class LoaderMod(loader.Module):
 
     strings = {
         "name": "Loader",
-        "repo_config_doc": "Fully qualified URL to a module repo",
-        "avail_header": "<b>◽ Official modules from repo</b>",
-        "no_module": "<b>◽ Module not available in repo.</b>",
-        "no_file": "<b>◽ File not found</b>",
-        "provide_module": "<b>◽ Provide a module to load</b>",
-        "bad_unicode": "<b>◽ Invalid Unicode formatting in module</b>",
-        "load_failed": "<b>◽ Loading failed. See logs for details</b>",
-        "loaded": "<b>◽ Module </b><b>{}</b>{}<b> loaded {}</b>{}{}{}{}{}",
-        "no_class": "<b>What class needs to be unloaded?</b>",
-        "unloaded": "<b>◽ Module {} unloaded.</b>",
-        "not_unloaded": "<b>◽ Module not unloaded.</b>",
-        "requirements_failed": "<b>◽ Requirements installation failed</b>",
-        "requirements_installing": "<b>◽ Installing requirements:\n\n{}</b>",
-        "requirements_restart": "<b>◽ Requirements installed, but a restart is required for </b><b>{}</b><b> to apply</b>",
-        "all_modules_deleted": "<b>◽ All modules deleted</b>",
+        "repo_config_doc": "Modul repo uchun to'liq malakali URL",
+        "avail_header": "<b>◽ Repo dan rasmiy modullar</b>",
+        "no_module": "<b>◽ Modul repoda mavjud emas.</b>",
+        "no_file": "<b>◽ Fayl topilmadi</b>",
+        "provide_module": "<b>◽ Yuklash uchun modulni taqdim eting</b>",
+        "bad_unicode": "<b>◽ Moduldagi Unicode formati noto‘g‘ri</b>",
+        "load_failed": "<b>◽ Yuklanmadi. Tafsilotlar uchun <code>.logs</code> qarang</b>",
+        "loaded": "<b>◽ Modul </b><b>{}</b>{}<b> oʻrnatildi! {}</b>{}{}{}{}{}",
+        "no_class": "<b>Qaysi modulni oʻchirish kerak?</b>",
+        "unloaded": "<b>◽ {} moduli oʻchirildi.</b>",
+        "not_unloaded": "<b>◽ Modul yuklanmagan.</b>",
+        "requirements_failed": "<b>◽ Talablarni o'rnatib bo'lmadi</b>",
+        "requirements_installing": "<b>◽ O'rnatish talablari:\n\n{}</b>",
+        "requirements_restart": "<b>◽ Talablar o'rnatilgan, ammo {} qo'llanilishi</b> uchun qayta ishga tushirish kerak",
+        "all_modules_deleted": "<b>◽ Barcha modullar o'chirildi</b>",
         "single_cmd": "\n◽ <b>{}{}</b> {}",
-        "undoc_cmd": "◽ No docs",
+        "undoc_cmd": "◽ Hujjat yo'q",
         "ihandler": "\n◽ <b>{}</b> {}",
-        "undoc_ihandler": "◽ No docs",
+        "undoc_ihandler": "◽ Hujjat yo'q",
         "inline_init_failed": (
-            "◽ <b>This module requires Hikka inline feature and "
+            "◽ <b>This module requires Premium inline feature and "
             "initialization of InlineManager failed</b>\n"
             "<i>Please, remove one of your old bots from @BotFather and "
             "restart userbot to load this module</i>"
