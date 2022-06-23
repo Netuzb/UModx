@@ -47,7 +47,7 @@ class InlineStuffMod(loader.Module):
             not getattr(message, "out", False)
             or not getattr(message, "via_bot_id", False)
             or message.via_bot_id != self.inline.bot_id
-            or "UModx galereya..." not in getattr(message, "raw_text", "")
+            or "premium galereya..." not in getattr(message, "raw_text", "")
         ):
             return
 
@@ -55,7 +55,7 @@ class InlineStuffMod(loader.Module):
 
         await message.delete()
 
-        m = await message.respond("🌄 <b>UModx galereya...</b>")
+        m = await message.respond("🌄 <b>premium galereya...</b>")
 
         await self.inline.gallery(
             message=m,
