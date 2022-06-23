@@ -54,8 +54,8 @@ class UpdaterMod(loader.Module):
         "lavhost_restart": "◍ <b>Your lavHost is restarting...\n&gt;///&lt;</b>",
         "lavhost_update": "◍ <b>Your lavHost is updating...\n&gt;///&lt;</b>",
         "heroku_update": "◍ <b>Deploying new version to Heroku...\nThis might take some time</b>",
-        "full_success": "◽ <b>Soso to'liq yangilandi! {}\n<i>◽ Daraja:</b> {} soniya</i>",
-        "heroku_psycopg2_unavailable": "◍ <b>PostgreSQL database is not available.</b>\n\n<i>Do not report this error to support chat, as it has nothing to do with Hikka. Try changing database to Redis</i>",
+        "full_success": "◽ <b>Premium-Userbot to'liq yangilandi! {}\n<i>◽ Daraja:</b> {} soniya</i>",
+        "heroku_psycopg2_unavailable": "◍ <b>PostgreSQL ma'lumotlar bazasi mavjud emas.</b>\n\n<i>Bu bizning emas ayni damda Heroku xatoligi. <code>.setredis</code></i>",
     }
 
     strings_ru = {
@@ -382,7 +382,7 @@ class UpdaterMod(loader.Module):
             )
         except Exception:
             logger.critical(
-                "Can't create Hikka folder. Possible reasons are:\n"
+                "Can't create premium folder. Possible reasons are:\n"
                 "- User reached the limit of folders in Telegram\n"
                 "- User got floodwait\n"
                 "Ignoring error and adding folder addition to ignore list"
