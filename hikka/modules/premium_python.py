@@ -61,11 +61,6 @@ class PythonMod(loader.Module):
         self._db = db
         self._phone = (await client.get_me()).phone
 
-    @loader.owner
-    async def evalcmd(self, message: Message):
-        """Alias for .e command"""
-        await self.ecmd(message)
-
     async def inline__allow(self, call: InlineCall):
         await call.answer("Now you can access db through .e command", show_alert=True)
         self._db.set(main.__name__, "enable_db_eval", True)
@@ -73,7 +68,7 @@ class PythonMod(loader.Module):
 
     @loader.owner
     async def ecmd(self, message: Message):
-        """Evaluates python code"""
+        """Python kodini baholaydi"""
         ret = self.strings("eval")
         try:
             it = await meval(
