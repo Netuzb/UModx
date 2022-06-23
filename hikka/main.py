@@ -1,33 +1,5 @@
 """Main script, where all the fun starts"""
 
-#    Friendly Telegram (telegram userbot)
-#    Copyright (C) 2018-2021 The Authors
-
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-
-# █ █ ▀ █▄▀ ▄▀█ █▀█ ▀    ▄▀█ ▀█▀ ▄▀█ █▀▄▀█ ▄▀█
-# █▀█ █ █ █ █▀█ █▀▄ █ ▄  █▀█  █  █▀█ █ ▀ █ █▀█
-#
-#              © Copyright 2022
-#
-#          https://t.me/hikariatama
-#
-# 🔒 Licensed under the GNU GPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
-
 import argparse
 import asyncio
 import collections
@@ -570,31 +542,32 @@ class Hikka:
 
             logo1 = f"""
 
-                        █ █ █ █▄▀ █▄▀ ▄▀█
-                        █▀█ █ █ █ █ █ █▀█
+                        
+                       █░█ █▀▄▀█ █▀█ █▀▄
+                       █▄█ █░▀░█ █▄█ █▄▀
 
-                     • Build: {build[:7]}
-                     • Version: {'.'.join(list(map(str, list(__version__))))}
-                     • {upd}
-                     • Platform: {_platform}
+                     ◽ Commtis: {build[:7]}
+                     ◽ Versiya: {'.'.join(list(map(str, list(__version__))))}
+                     ◽ Talqin: {upd}
+                     ◽ Platforma: {_platform}
                      """
 
             if not self.omit_log:
                 print(logo1)
                 web_url = (
-                    f"🌐 Web url: {self.web.url}\n"
+                    f"◽ Manzil: {self.web.url}\n"
                     if self.web and hasattr(self.web, "url")
                     else ""
                 )
                 logging.info(
-                    f"🌘 Hikka {'.'.join(list(map(str, list(__version__))))} started\n"
-                    f"🔏 GitHub commit SHA: {build[:7]} ({upd})\n"
-                    f"{web_url}"
-                    f"{_platform}"
+                    f"🌄 UModx {'.'.join(list(map(str, list(__version__))))} started\n"
+                    f"🌄 Github: {build[:7]} ({upd})\n"
+                    f"🌄 Manzil: {web_url}"
+                    f"🌄 Platforma: {_platform}"
                 )
                 self.omit_log = True
 
-            print(f"- Started for {client._tg_id} -")
+            print(f"🌄 ID raqamingiz: {client._tg_id} -")
         except Exception:
             logging.exception("Badge error")
 
