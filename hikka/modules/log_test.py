@@ -35,7 +35,7 @@ class TestMod(loader.Module):
         "logs_caption": "◽ <b>«Premium-Userbot»</b> jurnali quyidagicha.",
         "suspend_invalid_time": "🚫 <b>Invalid time to suspend</b>",
         "suspended": "🥶 <b>Bot suspended for</b> <code>{}</code> <b>seconds</b>",
-        "results_ping": "⏱ <b>Response time:</b> <code>{}</code> <b>ms</b>\n👩‍💼 <b>Uptime: {}</b>",
+        "results_ping": "◽ <b>«Javob vaqti»:</b> <code>{}</code> <b>ms</b>\n◽ <b>«Ish vaqti»: {}</b>",
         "confidential": "◽ <b>Jurnal darajasi </b><code>{}</code><b> maxfiy ma'lumotlaringizni oshkor qilishi mumkin, ehtiyot bo'ling</b>",
         "confidential_text": (
             "⚠️ <b>Log level </b><code>{0}</code><b> may reveal your confidential info, "
@@ -89,18 +89,6 @@ class TestMod(loader.Module):
 
         logging.getLogger().handlers[0].force_send_all = self.config["force_send_all"]
 
-    async def dumpcmd(self, message: Message):
-        """Use in reply to get a dump of a message"""
-        if not message.is_reply:
-            return
-
-        await utils.answer(
-            message,
-            "<code>"
-            + utils.escape_html((await message.get_reply_message()).stringify())
-            + "</code>",
-        )
-
     @loader.loop(interval=1)
     async def watchdog(self):
         try:
@@ -133,63 +121,6 @@ class TestMod(loader.Module):
         except Exception:
             logger.exception("Failed debugging watchdog")
             return
-
-    async def debugmodcmd(self, message: Message):
-        """[module] - For developers: Open module for debugging
-        You will be able to track changes in real-time"""
-        if "DYNO" in os.environ:
-            await utils.answer(message, self.strings("heroku_debug"))
-            return
-
-        args = utils.get_args_raw(message)
-        instance = None
-        for module in self.allmodules.modules:
-            if (
-                module.__class__.__name__.lower() == args.lower()
-                or module.strings["name"].lower() == args.lower()
-            ):
-                if os.path.isfile(
-                    os.path.join(
-                        DEBUG_MODS_DIR,
-                        f"{module.__class__.__name__}.py",
-                    )
-                ):
-                    os.remove(
-                        os.path.join(
-                            DEBUG_MODS_DIR,
-                            f"{module.__class__.__name__}.py",
-                        )
-                    )
-
-                    try:
-                        delattr(module, "hikka_debug")
-                    except AttributeError:
-                        pass
-
-                    await utils.answer(message, self.strings("debugging_disabled"))
-                    return
-
-                module.hikka_debug = True
-                instance = module
-                break
-
-        if not instance:
-            await utils.answer(message, self.strings("bad_module"))
-            return
-
-        with open(
-            os.path.join(
-                DEBUG_MODS_DIR,
-                f"{instance.__class__.__name__}.py",
-            ),
-            "wb",
-        ) as f:
-            f.write(inspect.getmodule(instance).__loader__.data)
-
-        await utils.answer(
-            message,
-            self.strings("debugging_enabled").format(instance.__class__.__name__),
-        )
 
     async def logscmd(
         self,
@@ -395,23 +326,10 @@ class TestMod(loader.Module):
                 caption=self.strings("logs_caption").format(named_lvl, *other),
             )
 
-    @loader.owner
-    async def suspendcmd(self, message: Message):
-        """<time> - Suspends the bot for N seconds"""
-        try:
-            time_sleep = float(utils.get_args_raw(message))
-            await utils.answer(
-                message,
-                self.strings("suspended").format(time_sleep),
-            )
-            time.sleep(time_sleep)
-        except ValueError:
-            await utils.answer(message, self.strings("suspend_invalid_time"))
-
     async def pingcmd(self, message: Message):
-        """Test your userbot ping"""
+        """Userbot pingini sinab ko'ring"""
         start = time.perf_counter_ns()
-        message = await utils.answer(message, "<code>🐻 Nofin...</code>")
+        message = await utils.answer(message, "<code>◽ premium...</code>")
         await utils.answer(
             message,
             self.strings("results_ping").format(
