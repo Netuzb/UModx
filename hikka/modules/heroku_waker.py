@@ -1,13 +1,3 @@
-# █ █ ▀ █▄▀ ▄▀█ █▀█ ▀    ▄▀█ ▀█▀ ▄▀█ █▀▄▀█ ▄▀█
-# █▀█ █ █ █ █▀█ █▀▄ █ ▄  █▀█  █  █▀█ █ ▀ █ █▀█
-#
-#              © Copyright 2022
-#
-#          https://t.me/hikariatama
-#
-# 🔒 Licensed under the GNU GPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import logging
 import os
 
@@ -18,7 +8,6 @@ except ImportError as e:
         raise e
 
 from telethon.tl.types import Message
-
 from .. import loader, main, utils, heroku
 
 logger = logging.getLogger(__name__)
@@ -31,17 +20,17 @@ class HerokuMod(loader.Module):
     strings = {
         "name": "Heroku",
         "redisdocs": (
-            "🥡 <b>Redis Database</b>\n\n"
-            "🇷🇺 <b>If you are from Russia, or just want to use external service:</b>\n"
-            "1. Go to https://redis.com\n"
-            "2. Register account\n"
-            "3. Create database instance\n"
-            "4. Enter your Redis Database URL via <code>.setredis &lt;redis_url&gt;</code>\n"
-            "<i>💡 Hint: URL structure is <code>redis://:PASSWORD@ENDPOINT</code></i>\n\n"
-            "♓️ <b>If you are not from Russia, just enable </b><code>heroku-redis</code><b> plugin for your app. For this action Heroku account verification is required!</b>"
+            "🥡 <b>Redis ma'lumotlar bazasi</b>\n\n"
+            "🇷🇺 <b>Agar siz Rossiyadan bo'lsangiz yoki shunchaki tashqi xizmatdan foydalanmoqchi bo'lsangiz:</b>\n"
+            "1. https://redis.com ga kiring\n"
+            "2. Hisob qaydnomasini ro'yxatdan o'tkazing\n"
+            "3. Ma'lumotlar bazasi namunasini yarating\n"
+            "4. Redis ma'lumotlar bazasi URL manzilini orqali kiriting <code>.setredis &lt;redis_url&gt;</code>\n"
+            "<i>💡 Namuna: URL tuzilishi <code>redis://:PASSWORD@ENDPOINT</code></i>\n\n"
+            "♓️ <b>Agar siz Rossiyadan bo'lmasangiz, shunchaki yoqing </b><code>heroku-redis</code><b>. Ushbu harakat uchun Heroku hisobini tekshirish talab qilinadi!</b>"
         ),
-        "url_invalid": "🚫 <b>Invalid URL specified</b>",
-        "url_saved": "✅ <b>URL saved</b>",
+        "url_invalid": "🚫 <b>URL noto‘g‘ri ko‘rsatilgan</b>",
+        "url_saved": "✅ <b>URL saqlandi</b>",
     }
 
     strings_ru = {
