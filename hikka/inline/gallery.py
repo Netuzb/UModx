@@ -216,7 +216,7 @@ class Gallery(InlineUnit):
             try:
                 status_message = await (
                     message.edit if message.out else message.respond
-                )("🌘 <b>Loading inline gallery...</b>")
+                )("◽ <b>premium galereya...</b>")
             except Exception:
                 status_message = None
         else:
@@ -361,14 +361,14 @@ class Gallery(InlineUnit):
                 inline_message_id=call.inline_message_id,
                 reply_markup=self._gallery_markup(unit_id),
             )
-            await call.answer("✅ Slideshow on")
+            await call.answer("✅ Slayd-shou yoqilgan")
         else:
             del self._units[unit_id]["slideshow"]
             await self.bot.edit_message_reply_markup(
                 inline_message_id=call.inline_message_id,
                 reply_markup=self._gallery_markup(unit_id),
             )
-            await call.answer("🚫 Slideshow off")
+            await call.answer("🚫 Slayd-shou o'chirilgan")
             return
 
         asyncio.ensure_future(
@@ -554,7 +554,7 @@ class Gallery(InlineUnit):
                     *(
                         [
                             {
-                                "text": "⏪",
+                                "text": "<◽◽",
                                 "callback": callback,
                                 "args": (unit["current_index"] - 1,),
                             }
@@ -567,7 +567,7 @@ class Gallery(InlineUnit):
                             {
                                 "text": "⏱"
                                 if not unit.get("slideshow", False)
-                                else "🛑",
+                                else "🏳️",
                                 "callback": callback,
                                 "args": ("slideshow",),
                             }
@@ -579,7 +579,7 @@ class Gallery(InlineUnit):
                     *(
                         [
                             {
-                                "text": "⏩",
+                                "text": "◽◽>",
                                 "callback": callback,
                                 "args": (unit["current_index"] + 1,),
                             }
@@ -590,7 +590,7 @@ class Gallery(InlineUnit):
                     ),
                 ]
             ]
-            + [[{"text": "🔻 Close", "callback": callback, "args": ("close",)}]],
+            + [[{"text": "🔻 Yopish", "callback": callback, "args": ("close",)}]],
         )
 
     async def _gallery_inline_handler(self, inline_query: InlineQuery):
