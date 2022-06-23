@@ -439,7 +439,7 @@ class Hikka:
                     connection=self.conn,
                     proxy=self.proxy,
                     connection_retries=None,
-                    device_model="Hikka",
+                    device_model="Premium",
                 )
 
                 client.start(phone)
@@ -479,7 +479,7 @@ class Hikka:
                     connection=self.conn,
                     proxy=self.proxy,
                     connection_retries=None,
-                    device_model="Hikka",
+                    device_model="Premium",
                 )
 
                 client.start(phone=raise_auth if self.web else lambda: input("Phone: "))
