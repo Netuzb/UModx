@@ -25,9 +25,9 @@ class InfomodMod(loader.Module):
 
     strings = {
         "name": "Maʼlumot",
-        "soso_admin": "◽ UModx-Owner: Temur Erkinov",
-        "soso_platforma": "◽ <b>UModx-Platforma</b>",
-        "soso_userbot": "◽ <b>UModx-Userbot (◕ᴗ◕✿)</b>",
+        "soso_admin": "◽ Premium-Owner: Temur Erkinov",
+        "soso_platforma": "◽ <b>Premium-Platforma</b>",
+        "soso_userbot": "◽ <b>Premium-Userbot (◕ᴗ◕✿)</b>",
         "soso_einstein": "◽ <b>Ommaviy userbot emas:</b> shaxsiy didga moslangan hamda boshqaruvi oʻz xatti-harakatlarimga bogʻliq.",
         "_cfg_cst_msg": "Ma'lumot uchun maxsus xabar. O'z ichiga olishi mumkin {me}, {version}, {build}, {prefix}, {platform}",
         "_cfg_cst_btn": "Ma'lumot uchun maxsus tugma. O'chirish uchun tugmani bo'sh qoldiring",
@@ -35,8 +35,8 @@ class InfomodMod(loader.Module):
     }
     
     strings_ru = {
-        "soso_platforma": "◽ <b>UModx-Платформа</b>",
-        "soso_userbot": "◽ <b>UModx-Юзербот (◕ᴗ◕✿)</b>",
+        "soso_platforma": "◽ <b>Premium-Платформа</b>",
+        "soso_userbot": "◽ <b>Premium-Юзербот (◕ᴗ◕✿)</b>",
         "soso_einstein": "◽ <b>Не публичный юзербот:</b> адаптирован под личный вкус и управление зависит от моего поведения.",
         "_cfg_cst_msg": "Специальное информационное сообщение. Может включать {me}, {version}, {build}, {prefix}, {platform}",
         "_cfg_cst_btn": "Специальная кнопка для информации. Оставьте кнопку пустой, чтобы отключить ее.",
@@ -94,7 +94,7 @@ class InfomodMod(loader.Module):
 
         me = f'<code><a href="tg://user?id={self._me.id}">{utils.escape_html(get_display_name(self._me))}</a></code>'
         version = f'<i>{".".join(list(map(str, list(main.__version__))))}</i>'
-        build = f'<a href="https://github.com/Netuzb/sosi/commit/{ver}">#{ver[:8]}</a>'  # fmt: skip
+        build = f'<a href="https://github.com/Netuzb/UModx/commit/{ver}">#{ver[:8]}</a>'  # fmt: skip
         prefix = f"•<code>{utils.escape_html(self.get_prefix())}</code>•"
         platform = utils.get_named_platform()
 
@@ -134,7 +134,7 @@ class InfomodMod(loader.Module):
             text=self._render_info(),
             reply_markup=self._get_mark(),
             **(
-                {"photo": "http://f0664355.xsph.ru/img/umodx_banner.png"}
+                {"photo": "http://f0664355.xsph.ru/img/info_post.png"}
                 if not self.config["disable_banner"]
                 else {}
             ),
