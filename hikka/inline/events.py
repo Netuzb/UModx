@@ -364,23 +364,23 @@ class Events(InlineUnit):
             try:
                 doc = utils.escape_html(inspect.getdoc(fun))
             except Exception:
-                doc = "🦥 No docs"
+                doc = "◽ Yo'q"
 
-            _help += f"🎹 <code>@{self.bot_username} {name}</code> - {doc}\n"
+            _help += f"◽ <code>@{self.bot_username} {name}</code> - {doc}\n"
 
         if not _help:
             await inline_query.answer(
                 [
                     InlineQueryResultArticle(
                         id=utils.rand(20),
-                        title="Show available inline commands",
-                        description="You have no available commands",
+                        title="Mavjud inline buyruqlarni ko'rsatish",
+                        description="Sizda mavjud inline buyruqlar yo'q",
                         input_message_content=InputTextMessageContent(
-                            "<b>😔 There are no available inline commands or you lack access to them</b>",
+                            "<b>◽ Ushbu <u>Premium-Userbot</u> sizga tegishli emas!</b>",
                             "HTML",
                             disable_web_page_preview=True,
                         ),
-                        thumb_url="https://img.icons8.com/fluency/50/000000/info-squared.png",
+                        thumb_url="https://imgur.com/IefmnzV",
                         thumb_width=128,
                         thumb_height=128,
                     )
@@ -393,14 +393,14 @@ class Events(InlineUnit):
             [
                 InlineQueryResultArticle(
                     id=utils.rand(20),
-                    title="Show available inline commands",
-                    description=f"You have {len(_help.splitlines())} available command(-s)",
+                    title="Mavjud inline buyruqlarni ko'rsatish",
+                    description=f"Sizdagi buyruqlar: {len(_help.splitlines())}",
                     input_message_content=InputTextMessageContent(
-                        f"<b>ℹ️ Available inline commands:</b>\n\n{_help}",
+                        f"<b>◽ Mavjud inline buyruqlar:</b>\n\n{_help}",
                         "HTML",
                         disable_web_page_preview=True,
                     ),
-                    thumb_url="https://img.icons8.com/fluency/50/000000/info-squared.png",
+                    thumb_url="https://imgur.com/IefmnzV",
                     thumb_width=128,
                     thumb_height=128,
                 )
