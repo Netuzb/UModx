@@ -16,32 +16,32 @@ class HikkaConfigMod(loader.Module):
 
     strings = {
         "name": "Config",
-        "choose_core": "🎚 <b>Choose a category of modules to configure</b>",
-        "configure": "🎚 <b>Choose a module to configure</b>",
-        "configuring_mod": "🎚 <b>Choose config option for mod</b> <code>{}</code>\n\n<b>Current options:</b>\n\n{}",
-        "configuring_option": "🎚 <b>Configuring option </b><code>{}</code><b> of mod </b><code>{}</code>\n<i>ℹ️ {}</i>\n\n<b>Default: {}</b>\n\n<b>Current: {}</b>\n\n{}",
-        "option_saved": "🎚 <b>Option </b><code>{}</code><b> of mod </b><code>{}</code><b> saved!</b>\n<b>Current: {}</b>",
-        "option_reset": "♻️ <b>Option </b><code>{}</code><b> of mod </b><code>{}</code><b> has been reset to default</b>\n<b>Current: {}</b>",
-        "args": "🚫 <b>You specified incorrect args</b>",
-        "no_mod": "🚫 <b>Module doesn't exist</b>",
-        "no_option": "🚫 <b>Configuration option doesn't exist</b>",
-        "validation_error": "🚫 <b>You entered incorrect config value. \nError: {}</b>",
-        "try_again": "🔁 Try again",
-        "typehint": "🕵️ <b>Must be a{eng_art} {}</b>",
+        "choose_core": "🎚 <b>Sozlash uchun modullar toifasini tanlang</b>",
+        "configure": "🎚 <b>Sozlash uchun modulni tanlang</b>",
+        "configuring_mod": "🎚 <b>Mod uchun konfiguratsiya opsiyasini tanlang</b> <code>{}</code>\n\n<b>Joriy variantlar:</b>\n\n{}",
+        "configuring_option":  <b>Variant </b><code>{}</code><b> of mod </b><code>{}</code><b> saqlangan!</b>\n<b>Hozirgi: {}</b>",
+        "option_saved": "🎚 <b>Variant </b><code>{}</code><b> </b><code>{}</code><b> saqlangan!</b>\n<b>Hozirgi: {}</b>",
+        "option_reset": "♻️ <b>Variant </b><code>{}</code><b> </b><code>{}</code><b> asl holatiga qaytarildi</b>\n<b>Hozirgi: {}</b>",
+        "args": "🚫 <b>Siz noto'g'ri arglarni ko'rsatdingiz</b>",
+        "no_mod": "🚫 <b>Modul mavjud emas</b>",
+        "no_option": "🚫 <b>Konfiguratsiya opsiyasi mavjud emas</b>",
+        "validation_error": "🚫 <b>Siz noto'g'ri konfiguratsiya qiymatini kiritdingiz. \nXato: {}</b>",
+        "try_again": "🔁 Qayta urinib ko'ring",
+        "typehint": "🕵️ <b>Bo'lishi kerak a{eng_art} {}</b>",
         "set": "set",
-        "set_default_btn": "♻️ Reset default",
-        "enter_value_btn": "✍️ Enter value",
-        "enter_value_desc": "✍️ Enter new configuration value for this option",
-        "add_item_desc": "✍️ Enter item to add",
-        "remove_item_desc": "✍️ Enter item to remove",
-        "back_btn": "👈 Back",
-        "close_btn": "🔻 Close",
-        "add_item_btn": "➕ Add item",
-        "remove_item_btn": "➖ Remove item",
-        "show_hidden": "🚸 Show value",
-        "hide_value": "🔒 Hide value",
-        "builtin": "🕋 Built-in",
-        "external": "🛸 External",
+        "set_default_btn": "♻️ Standartni asl holatiga qaytarish",
+        "enter_value_btn": "✍️ Qiymatni kiriting",
+        "enter_value_desc": "✍️ Ushbu parametr uchun yangi konfiguratsiya qiymatini kiriting",
+        "add_item_desc": "✍️ Qo'shish uchun elementni kiriting",
+        "remove_item_desc": "✍️ O'chirish uchun elementni kiriting",
+        "back_btn": "👈 Orqaga",
+        "close_btn": "🔻 Yopish",
+        "add_item_btn": "➕ Element qo'shish",
+        "remove_item_btn": "➖ Elementni olib tashlash",
+        "show_hidden": "🚸 Qiymatni ko'rsatish",
+        "hide_value": "🔒 Qiymatni yashirish",
+        "builtin": "◽ «O'rnatilgan»",
+        "external": "◽ «Tashqi»",
     }
 
     strings_ru = {
@@ -721,44 +721,12 @@ class HikkaConfigMod(loader.Module):
         args = utils.get_args_raw(message)
         if self.lookup(args):
             form = await self.inline.form(
-                "🌘 <b>Loading configuration</b>",
+                "◽ <b>Config yuklanmoqda</b>",
                 message,
-                {"text": "🌘", "data": "empty"},
+                {"text": "◽", "data": "empty"},
                 ttl=24 * 60 * 60,
             )
             await self.inline__configure(form, args)
             return
 
         await self.inline__choose_category(message)
-
-    async def fconfigcmd(self, message: Message):
-        """<module_name> <propery_name> <config_value> - Stands for ForceConfig - Set the config value if it is not possible using default method"""
-        args = utils.get_args_raw(message).split(maxsplit=2)
-
-        if len(args) < 3:
-            await utils.answer(message, self.strings("args"))
-            return
-
-        mod, option, value = args
-
-        instance = self.lookup(mod)
-        if not instance:
-            await utils.answer(message, self.strings("no_mod"))
-            return
-
-        if option not in instance.config:
-            await utils.answer(message, self.strings("no_option"))
-            return
-
-        instance.config[option] = value
-        await utils.answer(
-            message,
-            self.strings("option_saved").format(
-                utils.escape_html(option),
-                utils.escape_html(mod),
-                self.prep_value(instance.config[option])
-                if not instance.config._config[option].validator
-                or instance.config._config[option].validator.internal_id != "Hidden"
-                else self.hide_value(instance.config[option]),
-            ),
-        )
