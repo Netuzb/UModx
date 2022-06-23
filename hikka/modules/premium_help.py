@@ -7,7 +7,7 @@ from .. import loader, security, utils
 
 logger = logging.getLogger(__name__)
 
-soso = "◽ "
+soso = "🌄 "
 
 @loader.tds
 class HelpMod(loader.Module):
@@ -26,7 +26,7 @@ class HelpMod(loader.Module):
         "first_cmd_tmpl": ": {}",
         "cmd_tmpl": ", {}",
         "soso_temur": soso + "️Userbot-Owner: Temur",
-        "soso_userbot": soso + "️Premium-Userbot",
+        "soso_userbot": soso + "️UModx-Userbot",
         "no_mod": soso + "<b>Tushunarsiz harakat.</b>",
         "hidden_shown": soso + "<b>{} modul(lar) berkitildi, {} modul(lar) koʻrsatilgan:</b>\n{}\n{}",
         "ihandler": "\n" + soso + "<b>{}</b> {}",
@@ -42,7 +42,7 @@ class HelpMod(loader.Module):
         "all_header": soso + "{} МОДУЛЕЙ ДОСТУПНО ◍ {} СКРЫТО",
         "all_header_classic": soso + "<b>{} модулей доступно.\n◽ {} модулей скрыто.</b>",
         "soso_temur": soso + "Темур-Эркинов",
-        "soso_userbot": soso + "Soso-Юзербот",
+        "soso_userbot": soso + "UModx-Юзербот",
         "no_mod": soso + "<b>Укажи модуль(-и), которые нужно скрыть</b>",
         "hidden_shown": soso + "<b>{} модулей скрыто, {} модулей показано:</b>\n{}\n{}",
         "undoc_ihandler": soso + "Нет описания",
@@ -57,25 +57,25 @@ class HelpMod(loader.Module):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "core_emoji",
-                "◽",
+                "🌄",
                 lambda: "Core module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "soso_emoji",
-                "◽",
+                "🌄",
                 lambda: "Hikka-only module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "plain_emoji",
-                "◽",
+                "🌄",
                 lambda: "Plain module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "empty_emoji",
-                "◽",
+                "🌄",
                 lambda: "Empty modules bullet",
                 validator=loader.validators.String(length=1),
             ),
@@ -354,7 +354,7 @@ class HelpMod(loader.Module):
        "text": f"{self.strings('soso_userbot')}", 
        "callback": self._temur,
       }],      
-           ], **{"photo": "http://f0664355.xsph.ru/img/info_post.png"},
+           ], **{"photo": "http://f0664355.xsph.ru/img/umodx_banner.png"},
                     ttl=10,
                     message=message,
                 )
