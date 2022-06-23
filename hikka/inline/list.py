@@ -152,7 +152,7 @@ class List(InlineUnit):
             try:
                 status_message = await (
                     message.edit if message.out else message.respond
-                )("🌘 <b>Loading inline list...</b>")
+                )("◽ <b>premium list...</b>")
             except Exception:
                 status_message = None
         else:
@@ -255,7 +255,7 @@ class List(InlineUnit):
                 total_pages=len(self._units[unit_id]["strings"]),
                 unit_id=unit_id,
             )
-            + [[{"text": "🔻 Close", "callback": callback, "args": ("close",)}]],
+            + [[{"text": "🔻 Yopish", "callback": callback, "args": ("close",)}]],
         )
 
     async def _list_inline_handler(self, inline_query: InlineQuery):
