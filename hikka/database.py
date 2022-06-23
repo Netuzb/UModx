@@ -148,10 +148,10 @@ class Database(dict):
         try:
             self._assets, _ = await utils.asset_channel(
                 self._client,
-                "umod-assets",
-                "🌆 UModx fayllaringiz shu yerda saqlanadi",
+                "premium-assets",
+                "🌆 Premium fayllaringiz shu yerda saqlanadi",
                 archive=True,
-                avatar="http://f0664355.xsph.ru/img/umodx_avatar.png",
+                avatar="http://f0664355.xsph.ru/img/bot_avatar.png",
             )
         except ChannelsTooMuchError:
             self._assets = None
