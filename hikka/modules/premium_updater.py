@@ -227,6 +227,41 @@ class UpdaterMod(loader.Module):
         except subprocess.CalledProcessError:
             logger.exception("Req install failed")
 
+    @loader.owner
+    async def updatecmd(self, message: Message):
+        """Downloads userbot updates"""
+        try:
+            current = utils.get_git_hash()
+            upcoming = next(
+                git.Repo().iter_commits("origin/master", max_count=1)
+            ).hexsha
+            if (
+                "--force" in (utils.get_args_raw(message) or "")
+                or not self.inline.init_complete
+                or not await self.inline.form(
+                    message=message,
+                    text=self.strings("update_confirm").format(
+                        *(
+                            [current, current[:8], upcoming, upcoming[:8]]
+                            if "DYNO" not in os.environ
+                            else ["", "", "", ""]
+                        )
+                    )
+                    if upcoming != current or "DYNO" in os.environ
+                    else self.strings("no_update"),
+                    reply_markup=[
+                        {
+                            "text": self.strings("btn_update"),
+                            "callback": self.inline_update,
+                        },
+                        {"text": self.strings("cancel"), "action": "close"},
+                    ],
+                )
+            ):
+                raise
+        except Exception:
+            await self.inline_update(message)
+
     async def inline_update(
         self,
         msg_obj: Union[InlineCall, Message],
