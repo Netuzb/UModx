@@ -34,14 +34,14 @@ class BackupMod(loader.Module):
     strings = {
         "name": "Backup",
         "soso_hecham": "— bekor qilish —",
-        "period": premium + "\n\n◽ <b>Quyidagi «Premium-Userbot»</b> backuper.\n◽ Backup uchun qulay vaqtni belgilang (soatda).",
+        "period": premium + "\n\n◽ <b>Quyidagi «UModx»</b> backuper.\n◽ Backup uchun qulay vaqtni belgilang (soatda).",
         "saved": soso + "<b>Backup davri saqlandi!</b> Siz uni keyinroq qayta sozlash uchun quyidagicha ishlating: <code>.set_backup_period</code>",
         "never": soso + "<b>Men avtomatik backup nusxalarini yaratmayman.</b> Siz uni keyinroq qayta sozlashingiz mumkin: <code>.set_backup_period</code>",
         "invalid_args": soso + "<b>To'g'ri backup davrini soatlarda yoki o'chirish uchun «0» ni belgilang</b>",
     }
 
     strings_ru = {
-        "period": "◽ <b>Это «Premium-Userbot»</b> бэкапер.\n◽ Установите время для бэкапа (в часах). ",
+        "period": "◽ <b>Это «UModx»</b> бэкапер.\n◽ Установите время для бэкапа (в часах). ",
         "soso_hecham": soso + "отменить",    
         "saved": soso + "<b>Периодичность сохранена!</b> Ее можно изменить с помощью: <code>.set_backup_period</code>",
         "never": soso + "Я не буду делать автоматические резервные копии. Можно отменить используя .set_backup_period",
@@ -54,7 +54,7 @@ class BackupMod(loader.Module):
         if not self.get("period"):
             await self.inline.bot.send_photo(
                 self._tg_id,
-                photo="http://f0664355.xsph.ru/img/info_post.png",
+                photo="https://te.legra.ph/file/eca95f4035898ee660212.jpg",
                 caption=self.strings("period"),
                 reply_markup=self.inline.generate_markup(
                     utils.chunks(
@@ -74,7 +74,7 @@ class BackupMod(loader.Module):
             ".",
             silent=True,
             archive=True,
-            avatar="http://f0664355.xsph.ru/img/new_avatar.png",
+            avatar="https://te.legra.ph/file/eca95f4035898ee660212.jpg",
             _folder="premium",
         )
 
