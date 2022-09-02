@@ -63,71 +63,6 @@ class ApodiktumInfoMod(loader.Module):
         "version": "Version",
     }
 
-    strings_en = {}
-
-    strings_de = {
-        "_cfg_banner": "Setzen Sie `True`, um das Media Banner zu deaktivieren.",
-        "_cfg_cst_bnr": "Benutzerdefiniertes Banner.",
-        "_cfg_cst_btn": (
-            "Benutzerdefinierte Schaltfläche für Informationen. Leer lassen, um"
-            " die Schaltfläche zu entfernen."
-        ),
-        "_cfg_cst_frmt": "Benutzerdefiniertes Dateiformat für das Banner.",
-        "_cfg_cst_msg": (
-            "Benutzerdefinierte Nachricht für Info. Kann die Schlüsselwörter"
-            " {me}, {version}, {build}, {prefix}, {platform}, {upd}, {uptime}"
-            " enthalten."
-        ),
-        "_cfg_inline_banner": (
-            "Setzen Sie `True`, um das Inline Media Banner zu deaktivieren."
-        ),
-        "_cmd_doc_capoinfo": "Dadurch wird die Konfiguration für das Modul geöffnet.",
-        "_ihandle_doc_info": "Отправить информацию о юзерботе",
-        "build": "Build",
-        "description": "ℹ Dadurch werden keine sensiblen Daten gefährdet.",
-        "owner": "Eigentümer",
-        "prefix": "Prefix",
-        "send_info": "Benutzerbot-Informationen senden.",
-        "up-to-date": "😌 Up-to-date",
-        "update_required": "😕 Aktualisierung erforderlich: <code>{}update</code>",
-        "uptime": "Betriebszeit",
-        "version": "Version",
-    }
-
-    strings_ru = {
-        "_cfg_banner": "Поставь `True`, чтобы отключить баннер-картинку.",
-        "_cfg_cst_bnr": "Кастомный баннер.",
-        "_cfg_cst_btn": (
-            "Кастомная кнопка в сообщении в info. Оставь пустым, чтобы убрать кнопку."
-        ),
-        "_cfg_cst_frmt": "Кастомный формат файла для баннера.",
-        "_cfg_cst_msg": (
-            "Кастомный текст сообщения в info. Может содержать ключевые слова"
-            " {me}, {version}, {build}, {prefix}, {platform}, {upd}, {uptime}."
-        ),
-        "_cfg_inline_banner": (
-            "Установите `True`, чтобы отключить встроенный медиа-баннер"
-        ),
-        "_cmd_doc_capoinfo": "Это откроет конфиг для модуля.",
-        "_ihandle_doc_info": "Отправить информацию о юзерботе.",
-        "build": "Сборка",
-        "description": "ℹ Это не раскроет никакой личной информации.",
-        "owner": "Владелец",
-        "prefix": "Префикс",
-        "send_info": "Отправить информацию о юзерботе.",
-        "up-to-date": "😌 Актуальная версия.",
-        "update_required": "😕 Требуется обновление: <code>{}update</code>",
-        "uptime": "Аптайм",
-        "version": "Версия",
-    }
-
-    all_strings = {
-        "strings": strings,
-        "strings_en": strings,
-        "strings_de": strings_de,
-        "strings_ru": strings_ru,
-    }
-
     changes = {
         "migration1": {
             "name": {
@@ -141,7 +76,7 @@ class ApodiktumInfoMod(loader.Module):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "custom_banner",
-                "https://t.me/file_dumbster/6",
+                "https://te.legra.ph/file/eca95f4035898ee660212.jpg",
                 lambda: self.strings("_cfg_cst_bnr"),
                 validator=loader.validators.Link(),
             ),
@@ -365,7 +300,7 @@ class ApodiktumInfoMod(loader.Module):
         )
 
     @loader.inline_everyone
-    async def apoinfo_inline_handler(self, _) -> dict:
+    async def info_inline_handler(self, _) -> dict:
         """Send userbot info"""
         m = {x: self._get_mark(x) for x in range(13)}
         btns = [
@@ -383,12 +318,7 @@ class ApodiktumInfoMod(loader.Module):
                 *([m[7]] if m[7] else []),
                 *([m[8]] if m[8] else []),
                 *([m[9]] if m[9] else []),
-            ],
-            [
-                *([m[10]] if m[10] else []),
-                *([m[11]] if m[11] else []),
-                *([m[12]] if m[12] else []),
-            ],
+            ],          
         ]
         msg_type = "message" if self.config["disable_inline_banner"] else "caption"
         return {
@@ -402,7 +332,7 @@ class ApodiktumInfoMod(loader.Module):
             "reply_markup": btns,
         }
 
-    async def capoinfocmd(self, message: Message):
+    async def cinfocmd(self, message: Message):
         """
         This will open the config for the module.
         """
@@ -412,7 +342,7 @@ class ApodiktumInfoMod(loader.Module):
         )
 
     @loader.unrestricted
-    async def apoinfocmd(self, message: Message):
+    async def infocmd(self, message: Message):
         """Send userbot info"""
         m = {x: self._get_mark(x) for x in range(13)}
         btns = [
@@ -430,11 +360,6 @@ class ApodiktumInfoMod(loader.Module):
                 *([m[7]] if m[7] else []),
                 *([m[8]] if m[8] else []),
                 *([m[9]] if m[9] else []),
-            ],
-            [
-                *([m[10]] if m[10] else []),
-                *([m[11]] if m[11] else []),
-                *([m[12]] if m[12] else []),
             ],
         ]
         await self.inline.form(
