@@ -76,7 +76,7 @@ class ApodiktumInfoMod(loader.Module):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "custom_banner",
-                "https://te.legra.ph/file/eca95f4035898ee660212.jpg",
+                "https://t.me/anonyusa/139",
                 lambda: self.strings("_cfg_cst_bnr"),
                 validator=loader.validators.Link(),
             ),
