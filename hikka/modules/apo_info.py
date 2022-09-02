@@ -1,3 +1,13 @@
+#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
+#             █▀█ █ █ █ █▀█ █▀▄ █
+#              © Copyright 2022
+#           https://t.me/hikariatama
+#
+# 🔒      Licensed under the GNU AGPLv3
+# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
+
+# scope: inline
+
 import logging
 
 import git
@@ -7,12 +17,15 @@ from telethon.utils import get_display_name
 from .. import loader, main, utils, version
 from ..inline.types import InlineQuery
 
+logger = logging.getLogger(__name__)
+
+
 @loader.tds
-class UModxInfoMod(loader.Module):
+class HikkaInfoMod(loader.Module):
     """Show userbot info"""
 
     strings = {
-        "name": "Info",
+        "name": "HikkaInfo",
         "owner": "Owner",
         "version": "Version",
         "build": "Build",
@@ -164,4 +177,3 @@ class UModxInfoMod(loader.Module):
                 else {}
             ),
         )
-
