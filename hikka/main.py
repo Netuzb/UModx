@@ -571,17 +571,17 @@ class Hikka:
 
 
 
-                  █░█ ▀█ █▄▄ █▀▀ █▄▀ █ █▀ ▀█▀ ▄▀█ █▄░█
-                  █▄█ █▄ █▄█ ██▄ █░█ █ ▄█ ░█░ █▀█ █░▀█
+              █░█ ▀█ █▄▄ █▀▀ █▄▀ █ █▀ ▀█▀ ▄▀█ █▄░█
+              █▄█ █▄ █▄█ ██▄ █░█ █ ▄█ ░█░ █▀█ █░▀█
                         
-                       █░█ █▀▄▀█ █▀█ █▀▄ ▀▄▀
-                       █▄█ █░▀░█ █▄█ █▄▀ █░█
+              █░█ █▀▄▀█ █▀█ █▀▄ ▀▄▀ ░ ░ ░
+              █▄█ █░▀░█ █▄█ █▄▀ █░█ ▄ ▄ ▄
 
-                     • Build: {build[:7]}
-                     • Versiya: {'.'.join(list(map(str, list(__version__))))}
-                     • {upd}
-                     • Platforma: {_platform}
-                     """
+             ◽ Build: {build[:7]}
+             ◽ Versiya: {'.'.join(list(map(str, list(__version__))))}
+             ◽ {upd}
+             ◽ Platforma: {_platform}
+             """
 
             if not self.omit_log:
                 print(logo1)
