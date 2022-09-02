@@ -1,46 +1,23 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
-# scope: inline
-
 import asyncio
 import contextlib
 import logging
 from typing import Union
-
 import git
-
 from .. import loader, utils
 from ..inline.types import InlineCall
 
-logger = logging.getLogger(__name__)
-
-
 @loader.tds
 class UpdateNotifierMod(loader.Module):
-    """Tracks latest Hikka releases, and notifies you, if update is required"""
+    """Yangilanish"""
 
     strings = {
-        "name": "UpdateNotifier",
+        "name": "UpdateNotifer",
         "update_required": (
-            "🌘 <b>Hikka Update available!</b>\n\nNew Hikka version released.\n🔮"
-            " <b>Hikka <s>{}</s> -> {}</b>\n\n{}"
+            "🌟 <b>UModx yangilandi!</b>\n\n- Yangi UModx versiyasi.\n🔮"
+            " <b>UModx <s>{}</s> -> {}</b>\n\n{}"
         ),
-        "more": "\n<i><b>🎥 And {} more...</b></i>",
-    }
-
-    strings_ru = {
-        "update_required": (
-            "🌘 <b>Доступно обновление Hikka!</b>\n\nОпубликована новая версия Hikka.\n🔮"
-            " <b>Hikka <s>{}</s> -> {}</b>\n\n{}"
-        ),
-        "more": "\n<i><b>🎥 И еще {}...</b></i>",
-    }
+        "more": "\n<i><b>☕ Va {}...</b></i>",
+    }   
 
     _notified = None
 
@@ -96,8 +73,8 @@ class UpdateNotifierMod(loader.Module):
 
         self._markup = self.inline.generate_markup(
             [
-                {"text": "🔄 Update", "data": "hikka_update"},
-                {"text": "🚫 Ignore", "data": "hikka_upd_ignore"},
+                {"text": "🔥 Yangilash", "data": "hikka_update"},
+                {"text": "🚫 Kerakmas", "data": "hikka_upd_ignore"},
             ]
         )
 
