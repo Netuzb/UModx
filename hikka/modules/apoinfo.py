@@ -57,8 +57,8 @@ class ApodiktumInfoMod(loader.Module):
         "owner": "Boshqaruvchi",
         "prefix": "Prefiks",
         "send_info": "Send userbot info.",
-        "up-to-date": "☕ Sizda soʻngi versiya!",
-        "update_required": "😕 Update required: <code>{}update</code>",
+        "up-to-date": "→ Sizda eng soʻngi versiya!",
+        "update_required": "→ Yangilanish mavjud: <code>{}update --force</code>",
         "uptime": "Soʻngi yangilanish",
         "version": "Versiya",
     }
@@ -280,7 +280,7 @@ class ApodiktumInfoMod(loader.Module):
             else (
                 "<b>🔥 Apodiktum «UModx» Info</b>\n"
                 f"<b>◽ {self.strings('owner')}: </b>{me}\n\n"
-                f"<b>◽ {self.strings('uptime')}: </b><code>{uptime}</code>\n"
+                f"<b>◽ {self.strings('uptime')}: </b><code>{uptime} oldin</code>\n"
                 f"<b>◽ {self.strings('version')}: </b>{version} {build}\n"
                 f"<b>{upd}</b>\n\n"
                 f"<b>◽ {self.strings('prefix')}: </b>{prefix}\n"
