@@ -579,7 +579,6 @@ class Hikka:
 
              ◽ Build: {build[:7]}
              ◽ Versiya: {'.'.join(list(map(str, list(__version__))))}
-             ◽ {upd}
              ◽ Platforma: {_platform}
              """
 
@@ -592,9 +591,7 @@ class Hikka:
                 )
                 logging.info(
                     f"🔥 UModx {'.'.join(list(map(str, list(__version__))))} started\n"
-                    f"🐱 GitHub: {build[:7]} ({upd})\n"
                     f"{web_url}"
-                    f"{_platform}"
                 )
                 self.omit_log = True
 
