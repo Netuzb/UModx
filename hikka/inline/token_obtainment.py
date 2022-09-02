@@ -8,6 +8,8 @@ from telethon.tl.functions.contacts import UnblockRequest
 from .. import utils
 from .types import InlineUnit
 
+logger = logging.getLogger(__name__)
+
 photo = io.BytesIO(
     requests.get(
         "https://te.legra.ph/file/eca95f4035898ee660212.jpg"
