@@ -1,26 +1,12 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
-# scope: inline
-
 import logging
 import re
 import string
-from hikka.inline.types import BotInlineMessage
 
+from hikka.inline.types import BotInlineMessage
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest
 from telethon.tl.types import Message
-
 from .. import loader, utils
-
-logger = logging.getLogger(__name__)
-
 
 @loader.tds
 class InlineStuffMod(loader.Module):
@@ -44,7 +30,7 @@ class InlineStuffMod(loader.Module):
         "this_is_hikka": (
             "☕ <b>Salom! — Bu «UModx» yuzerboti. Oʻrnatish uchun quyidagi manzillarga oʻting.\n\n<b>🔥 <a"
             ' href="https://t.me/umodules_modullar">«UMod» Modullar Guruhi</a></b>\n<b>🌟 <a'
-            ' href="https://t.me/umodxbot">«UMod» Qo'llab-Quvvatlash markazi</a></b>'
+            ' href="https://t.me/umodxbot">«UMod» Qo‘llab-Quvvatlash markazi</a></b>'
         ),
     }
 
