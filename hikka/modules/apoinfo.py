@@ -110,8 +110,8 @@ class ApodiktumInfoMod(loader.Module):
             loader.ConfigValue(
                 "custom_button1",
                 [
-                    "🔥 Apodiktum Hikka Modules 🔥",
-                    "https://t.me/apodiktum_modules",
+                    "🇺🇿 UMod Rasmiy Manba",
+                    "https://t.me/umodules",
                 ],
                 lambda: self.strings("_cfg_cst_btn"),
                 validator=loader.validators.Union(
@@ -139,7 +139,7 @@ class ApodiktumInfoMod(loader.Module):
             ),
             loader.ConfigValue(
                 "custom_button4",
-                ["🌘 Hikka EN Support chat", "https://t.me/hikka_en"],
+                ["☕ Amore modullar", "https://t.me/amoremods"],
                 lambda: self.strings("_cfg_cst_btn"),
                 validator=loader.validators.Union(
                     loader.validators.Series(fixed_len=2),
@@ -148,7 +148,7 @@ class ApodiktumInfoMod(loader.Module):
             ),
             loader.ConfigValue(
                 "custom_button5",
-                ["🌘 Hikka. userbot", "https://t.me/hikka_ub"],
+                ["🔥 Thomas modullar", "https://t.me/wilsonmods"],
                 lambda: self.strings("_cfg_cst_btn"),
                 validator=loader.validators.Union(
                     loader.validators.Series(fixed_len=2),
@@ -157,7 +157,7 @@ class ApodiktumInfoMod(loader.Module):
             ),
             loader.ConfigValue(
                 "custom_button6",
-                ["🌘 Hikka RU Support chat", "https://t.me/hikka_talks"],
+                None,
                 lambda: self.strings("_cfg_cst_btn"),
                 validator=loader.validators.Union(
                     loader.validators.Series(fixed_len=2),
