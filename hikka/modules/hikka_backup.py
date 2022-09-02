@@ -1,12 +1,11 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
+__version__ = (2, 1, 4)
 
-# scope: inline
+#            ▀█▀ █ █ █▀█ █▀▄▀█ ▄▀█ █▀
+#             █  █▀█ █▄█ █ ▀ █ █▀█ ▄█  
+#             https://t.me/netuzb
+#
+# 🔒 Licensed under the GNU AGPLv3
+# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
 
 import asyncio
 import datetime
@@ -14,114 +13,100 @@ import io
 import json
 import logging
 import time
-
 from telethon.tl.types import Message
-
 from .. import loader, utils
-from ..inline.types import BotInlineCall
+from ..inline.types import InlineCall
 
 logger = logging.getLogger(__name__)
 
+soso = "◽ "
+premium = """◽ <b>«<u>Premium-Userbot</u>»</b> - ostonamizga xush kelibsiz! Temur akasi!
+◽ <b>«Maʼlumot oʻrnida»</b> - <u>premium-userbot</u> eng toza va xavfsizlik boʻyicha yuqori oʻrinlarni egallab kelayotganlaridan hisoblanadi.
+
+◽ <b>«Yaratuvchi hamda boshqaruvchi»</b> - Temur Erkinov - @netuzb
+◽ <b>«Rus tiliga oʻgirish uchun»</b> <code>.setlang ru</code>
+◽ <b>«Barcha modullar»</b> <code>.help</code>"""
 
 @loader.tds
-class HikkaBackupMod(loader.Module):
+class BackupMod(loader.Module):
     """Automatic database backup"""
 
     strings = {
-        "name": "HikkaBackup",
-        "period": (
-            "⌚️ <b>Unit «ALPHA»</b> creates database backups periodically. You can"
-            " change this behavior later.\n\nPlease, select the periodicity of"
-            " automatic database backups"
-        ),
-        "saved": (
-            "✅ Backup period saved. You can re-configure it later with"
-            " .set_backup_period"
-        ),
-        "never": (
-            "✅ I will not make automatic backups. You can re-configure it later with"
-            " .set_backup_period"
-        ),
-        "invalid_args": (
-            "🚫 <b>Specify correct backup period in hours, or `0` to disable</b>"
-        ),
+        "name": "Backup",
+        "soso_hecham": "— bekor qilish —",
+        "period": premium + "\n\n◽ <b>Quyidagi «Premium-Userbot»</b> backuper.\n◽ Backup uchun qulay vaqtni belgilang (soatda).",
+        "saved": soso + "<b>Backup davri saqlandi!</b> Siz uni keyinroq qayta sozlash uchun quyidagicha ishlating: <code>.set_backup_period</code>",
+        "never": soso + "<b>Men avtomatik backup nusxalarini yaratmayman.</b> Siz uni keyinroq qayta sozlashingiz mumkin: <code>.set_backup_period</code>",
+        "invalid_args": soso + "<b>To'g'ri backup davrini soatlarda yoki o'chirish uchun «0» ni belgilang</b>",
     }
 
     strings_ru = {
-        "period": (
-            "⌚️ <b>Юнит «ALPHA»</b> создает регулярные резервные копии. Эти настройки"
-            " можно изменить позже.\n\nПожалуйста, выберите периодичность резервного"
-            " копирования"
-        ),
-        "saved": (
-            "✅ Периодичность сохранена! Ее можно изменить с помощью .set_backup_period"
-        ),
-        "never": (
-            "✅ Я не буду делать автоматические резервные копии. Можно отменить"
-            " используя .set_backup_period"
-        ),
-        "invalid_args": (
-            "🚫 <b>Укажи правильную периодичность в часах, или `0` для отключения</b>"
-        ),
+        "period": "◽ <b>Это «Premium-Userbot»</b> бэкапер.\n◽ Установите время для бэкапа (в часах). ",
+        "soso_hecham": soso + "отменить",    
+        "saved": soso + "<b>Периодичность сохранена!</b> Ее можно изменить с помощью: <code>.set_backup_period</code>",
+        "never": soso + "Я не буду делать автоматические резервные копии. Можно отменить используя .set_backup_period",
+        "invalid_args": soso + "<b>Укажи правильную периодичность в часах, или `0` для отключения</b>",
     }
 
-    async def client_ready(self):
+    async def client_ready(self, client, db):
+        self._db = db
+        self._client = client
         if not self.get("period"):
             await self.inline.bot.send_photo(
-                self.tg_id,
-                photo="https://github.com/hikariatama/assets/raw/master/unit_alpha.png",
+                self._tg_id,
+                photo="http://f0664355.xsph.ru/img/info_post.png",
                 caption=self.strings("period"),
                 reply_markup=self.inline.generate_markup(
                     utils.chunks(
                         [
-                            {
-                                "text": f"🕰 {i} h",
-                                "callback": self._set_backup_period,
-                                "args": (i,),
-                            }
+                            {"text": f"«{i} soat»", "data": f"backup_period/{i}"}
                             for i in {1, 2, 4, 6, 8, 12, 24, 48, 168}
                         ],
                         3,
                     )
-                    + [
-                        [
-                            {
-                                "text": "🚫 Never",
-                                "callback": self._set_backup_period,
-                                "args": (0,),
-                            }
-                        ]
-                    ]
+                    + [[{"text": f"{self.strings('soso_hecham')}", "data": "backup_period/never"}]]
                 ),
             )
 
         self._backup_channel, _ = await utils.asset_channel(
             self._client,
-            "hikka-backups",
-            "📼 Your database backups will appear there",
+            "Premium",
+            ".",
             silent=True,
             archive=True,
-            avatar="https://github.com/hikariatama/assets/raw/master/hikka-backups.png",
-            _folder="hikka",
+            avatar="http://f0664355.xsph.ru/img/new_avatar.png",
+            _folder="premium",
         )
 
         self.handler.start()
 
-    async def _set_backup_period(self, call: BotInlineCall, value: int):
-        if not value:
-            self.set("period", "disabled")
-            await call.answer(self.strings("never"), show_alert=True)
-            await call.delete()
+    async def backup_period_callback_handler(self, call: InlineCall):
+        if not call.data.startswith("backup_period"):
             return
 
-        self.set("period", value * 60 * 60)
+        if call.data == "backup_period/never":
+            self.set("period", "disabled")
+            await call.answer(self.strings("never"), show_alert=True)
+
+            await self.inline.bot.delete_message(
+                call.message.chat.id,
+                call.message.message_id,
+            )
+            return
+
+        period = int(call.data.split("/")[1]) * 60 * 60
+
+        self.set("period", period)
         self.set("last_backup", round(time.time()))
 
         await call.answer(self.strings("saved"), show_alert=True)
-        await call.delete()
 
-    @loader.command(ru_doc="<время в часах> - Установить частоту бэкапов")
-    async def set_backup_period(self, message: Message):
+        await self.inline.bot.delete_message(
+            call.message.chat.id,
+            call.message.message_id,
+        )
+
+    async def set_backup_periodcmd(self, message: Message):
         """<time in hours> - Change backup frequency"""
         args = utils.get_args_raw(message)
         if not args or not args.isdigit() or int(args) not in range(200):
@@ -158,9 +143,7 @@ class HikkaBackupMod(loader.Module):
             )
 
             backup = io.BytesIO(json.dumps(self._db).encode("utf-8"))
-            backup.name = (
-                f"hikka-db-backup-{getattr(datetime, 'datetime', datetime).now().strftime('%d-%m-%Y-%H-%M')}.json"
-            )
+            backup.name = f"premium-usernot-db-backup-{getattr(datetime, 'datetime', datetime).now().strftime('%d-%m-%Y-%H-%M')}.json"
 
             await self._client.send_file(
                 self._backup_channel,
