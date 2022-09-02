@@ -28,9 +28,9 @@ class InlineStuffMod(loader.Module):
             " saved. Restart userbot to apply changes</b>"
         ),
         "this_is_hikka": (
-            "☕ <b>Salom! — Bu «UModx» yuzerboti. Oʻrnatish uchun quyidagi manzillarga oʻting.\n\n<b>🔥 <a"
-            ' href="https://t.me/umodules_modullar">«UMod» Modullar Guruhi</a></b>\n<b>🌟 <a'
-            ' href="https://t.me/umodxbot">«UMod» Qo‘llab-Quvvatlash markazi</a></b>'
+            "☕ <b>Salom!</b> — Bu <b>«UModx»</b> yuzerboti. Oʻrnatish uchun quyidagi manzillarga oʻting.\n\n"
+            '🔥 <a href="https://t.me/umodules_modullar">«UMod» Modullar Guruhi</a>\n'
+            '🚨 <a href="https://t.me/umodxbot">«UMod» Qo‘llab-Quvvatlash markazi</a>'
         ),
     }
 
