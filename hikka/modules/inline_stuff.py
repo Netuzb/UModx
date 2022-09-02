@@ -27,7 +27,7 @@ class InlineStuffMod(loader.Module):
             "<emoji document_id='6318792204118656433'>🎉</emoji> <b>Config successfully"
             " saved. Restart userbot to apply changes</b>"
         ),
-        "this_is_hikka": (
+        "this_is_umodx": (
             "☕ <b>Salom!</b> — Bu <b>«UModx»</b> yuzerboti. Oʻrnatish uchun quyidagi manzillarga oʻting.\n\n"
             '🔥 <a href="https://t.me/umodules_modullar">«UMod» Modullar Guruhi</a>\n'
             '🚨 <a href="https://t.me/umodxbot">«UMod» Qo‘llab-Quvvatlash markazi</a>'
@@ -132,6 +132,6 @@ class InlineStuffMod(loader.Module):
             return
 
         await message.answer_photo(
-            "https://github.com/hikariatama/assets/raw/master/hikka_banner.png",
-            caption=self.strings("this_is_hikka"),
+            "https://te.legra.ph/file/eca95f4035898ee660212.jpg",
+            caption=self.strings("this_is_umodx"),
         )
