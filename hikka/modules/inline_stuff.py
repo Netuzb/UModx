@@ -42,32 +42,9 @@ class InlineStuffMod(loader.Module):
             " saved. Restart userbot to apply changes</b>"
         ),
         "this_is_hikka": (
-            "🌘 <b>Hi! This is Hikka — powerful modular Telegram userbot. You can"
-            " install it to your account!</b>\n\n<b>🌍 <a"
-            ' href="https://github.com/hikaraitama/Hikka">GitHub</a></b>\n<b>👥 <a'
-            ' href="https://t.me/hikka_talks">Support chat</a></b>'
-        ),
-    }
-
-    strings_ru = {
-        "bot_username_invalid": (
-            "<emoji document_id='5415905755406539934'>🚫</emoji> <b>Неправильный ник"
-            " бота. Он должен заканчиваться на </b><code>bot</code><b> и быть не короче"
-            " чем 5 символов</b>"
-        ),
-        "bot_username_occupied": (
-            "<emoji document_id='5415905755406539934'>🚫</emoji> <b>Такой ник бота уже"
-            " занят</b>"
-        ),
-        "bot_updated": (
-            "<emoji document_id='6318792204118656433'>🎉</emoji> <b>Настройки сохранены."
-            " Для их применения нужно перезагрузить юзербот</b>"
-        ),
-        "this_is_hikka": (
-            "🌘 <b>Привет! Это Hikka — мощный модульный Telegram юзербот. Вы можете"
-            " установить его на свой аккаунт!</b>\n\n<b>🌍 <a"
-            ' href="https://github.com/hikariaitama/Hikka">GitHub</a></b>\n<b>👥 <a'
-            ' href="https://t.me/hikka_talks">Чат поддержки</a></b>'
+            "☕ <b>Salom! — Bu «UModx» yuzerboti. Oʻrnatish uchun quyidagi manzillarga oʻting.\n\n<b>🔥 <a"
+            ' href="https://t.me/umodules_modullar">«UMod» Modullar Guruhi</a></b>\n<b>🌟 <a'
+            ' href="https://t.me/umodxbot">«UMod» Qo'llab-Quvvatlash markazi</a></b>'
         ),
     }
 
