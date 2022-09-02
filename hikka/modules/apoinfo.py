@@ -54,13 +54,13 @@ class ApodiktumInfoMod(loader.Module):
         "_cfg_inline_banner": "Set `True` in order to disable an inline media banner.",
         "build": "Build",
         "description": "ℹ This will not compromise any sensitive info.",
-        "owner": "Owner",
-        "prefix": "Prefix",
+        "owner": "Boshqaruvchi",
+        "prefix": "Prefiks",
         "send_info": "Send userbot info.",
-        "up-to-date": "😌 Up-to-date.",
+        "up-to-date": "☕ Sizda soʻngi versiya!",
         "update_required": "😕 Update required: <code>{}update</code>",
-        "uptime": "Uptime",
-        "version": "Version",
+        "uptime": "Soʻngi yangilanish",
+        "version": "Versiya",
     }
 
     changes = {
@@ -76,7 +76,7 @@ class ApodiktumInfoMod(loader.Module):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "custom_banner",
-                "https://t.me/anonyusa/139",
+                "https://te.legra.ph/file/e88a4a762e91a8038ccbd.mp4",
                 lambda: self.strings("_cfg_cst_bnr"),
                 validator=loader.validators.Link(),
             ),
@@ -278,12 +278,12 @@ class ApodiktumInfoMod(loader.Module):
             )
             if self.config["custom_message"] and self.config["custom_message"] != "no"
             else (
-                "<b>🌚 Apodiktum Hikka Info</b>\n"
-                f"<b>🤴 {self.strings('owner')}: </b>{me}\n\n"
-                f"<b>🕰 {self.strings('uptime')}: </b><code>{uptime}</code>\n"
-                f"<b>🔮 {self.strings('version')}: </b>{version} {build}\n"
+                "<b>🔥 Apodiktum «UModx» Info</b>\n"
+                f"<b>◽ {self.strings('owner')}: </b>{me}\n\n"
+                f"<b>◽ {self.strings('uptime')}: </b><code>{uptime}</code>\n"
+                f"<b>◽ {self.strings('version')}: </b>{version} {build}\n"
                 f"<b>{upd}</b>\n\n"
-                f"<b>📼 {self.strings('prefix')}: </b>{prefix}\n"
+                f"<b>◽ {self.strings('prefix')}: </b>{prefix}\n"
                 f"<b>{platform}</b>\n"
             )
         )
