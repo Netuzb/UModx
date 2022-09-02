@@ -5,8 +5,9 @@ from telethon.tl.types import Message
 from telethon.utils import get_display_name
 
 from .. import loader, main, utils, version
-from ..inline.types import InlineQuery@loader.tds
+from ..inline.types import InlineQuery
 
+@loader.tds
 class UModxInfoMod(loader.Module):
     """Show userbot info"""
 
