@@ -1,27 +1,3 @@
-#    Friendly Telegram (telegram userbot)
-#    Copyright (C) 2018-2021 The Authors
-
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published by
-#    the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import asyncio
 import atexit
 import contextlib
@@ -31,7 +7,6 @@ import subprocess
 import sys
 from typing import Union
 import time
-
 import git
 from git import GitCommandError, Repo
 
@@ -44,9 +19,6 @@ from telethon.extensions.html import CUSTOM_EMOJIS
 
 from .. import loader, utils, heroku, main
 from ..inline.types import InlineCall
-
-logger = logging.getLogger(__name__)
-
 
 @loader.tds
 class UpdaterMod(loader.Module):
@@ -63,20 +35,20 @@ class UpdaterMod(loader.Module):
             " restarting...</b>"
         ),
         "downloading": (
-            "<emoji document_id='6318970114548958978'>🕗</emoji> <b>Downloading"
-            " updates...</b>"
+            "<emoji document_id='6318970114548958978'>🕗</emoji> <b>Yuklanmoqda"
+            " [yangi versiya]...</b>"
         ),
         "installing": (
-            "<emoji document_id='6318970114548958978'>🕗</emoji> <b>Installing"
-            " updates...</b>"
+            "<emoji document_id='6318970114548958978'>🕗</emoji> <b>Oʻrnatilmoqda"
+            " [yangi versiya]...</b>"
         ),
         "success": (
-            "<emoji document_id='6321050180095313397'>⏱</emoji> <b>Restart successful!"
-            " {}</b>\n<i>But still loading modules...</i>\n<i>Restart took {}s</i>"
+            "<emoji document_id='6321050180095313397'>⏱</emoji> <b>Restart amalga oshirildi!"
+            " {}</b>\n<i>Lekin, modullar hali yuklanmoqda...</i>\n<i>Restart hisobi {}s</i>"
         ),
         "origin_cfg_doc": "Git origin URL, for where to update from",
         "btn_restart": "🔄 Restart",
-        "btn_update": "🧭 Update",
+        "btn_update": "🧭 Yangilash",
         "restart_confirm": "❓ <b>Are you sure you want to restart?</b>",
         "secure_boot_confirm": (
             "❓ <b>Are you sure you want to restart in secure boot mode?</b>"
@@ -457,15 +429,6 @@ class UpdaterMod(loader.Module):
 
             logger.critical("Got update loop. Update manually via .terminal")
             return
-
-    @loader.unrestricted
-    @loader.command(ru_doc="Показать ссылку на исходный код проекта")
-    async def source(self, message: Message):
-        """Links the source code of this project"""
-        await utils.answer(
-            message,
-            self.strings("source").format(self.config["GIT_ORIGIN_URL"]),
-        )
 
     async def client_ready(self):
         if self.get("selfupdatemsg") is not None:
