@@ -1,133 +1,66 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import difflib
 import inspect
 import logging
 
+from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.types import Message
 
-from .. import loader, utils
+from .. import loader, security, utils
 
 logger = logging.getLogger(__name__)
 
 
 @loader.tds
-class HelpMod(loader.Module):
-    """Shows help for modules and commands"""
+class MHelpMod(loader.Module):
+    """MHelp module, made specifically for Hikka with <3"""
 
     strings = {
         "name": "Help",
         "bad_module": "<b>🚫 <b>Module</b> <code>{}</code> <b>not found</b>",
-        "single_mod_header": (
-            "<emoji document_id='5188377234380954537'>🌘</emoji> <b>{}</b>:"
-        ),
-        "single_cmd": "\n▫️ <code>{}{}</code> {}",
+        "single_mod_header": "🌄 <b>Module name:</b> {}",
+        "single_cmd": "\n🌄 <b>«{}{}»</b> {}",
         "undoc_cmd": "🦥 No docs",
-        "all_header": (
-            "<emoji document_id='5188377234380954537'>🌘</emoji> <b>{} mods available,"
-            " {} hidden:</b>"
-        ),
-        "mod_tmpl": "\n{} <code>{}</code>",
-        "first_cmd_tmpl": ": ( {}",
-        "cmd_tmpl": " | {}",
+        "all_header": "🌉 <b>«{}» module(s) available, «{}» hidden:</b>\n<i>— Above is the number of common modules you have and the number of blocked ones</i>",
+        "mod_tmpl": "\n{} <b>«{}»</b>",
+        "first_cmd_tmpl": " «{}»",
+        "cmd_tmpl": " «{}»",
         "no_mod": "🚫 <b>Specify module to hide</b>",
-        "hidden_shown": (
-            "<emoji document_id='5188377234380954537'>🌘</emoji> <b>{} modules hidden,"
-            " {} modules shown:</b>\n{}\n{}"
-        ),
-        "ihandler": "\n🎹 <code>{}</code> {}",
+        "hidden_shown": "🌉 <b>«{}» modul(lar) koʻrsatildi, «{}» berkitildi:</b>\n{}\n{}",
+        "ihandler": "\n✿ <code>{}</code> {}",
         "undoc_ihandler": "🦥 No docs",
-        "support": (
-            "{} <b>Link to </b><a href='https://t.me/hikka_talks'>support chat</a>"
-        ),
-        "partial_load": (
-            "<emoji document_id='5472105307985419058'>☝️</emoji> <b>Userbot is not"
-            " fully loaded, so not all modules are shown</b>"
-        ),
-        "not_exact": (
-            "<emoji document_id='5472105307985419058'>☝️</emoji> <b>No exact match"
-            " occured, so the closest result is shown instead</b>"
-        ),
-        "request_join": "You requested link for Hikka support chat",
-    }
-
-    strings_ru = {
-        "bad_module": "<b>🚫 <b>Модуль</b> <code>{}</code> <b>не найден</b>",
-        "single_mod_header": (
-            "<emoji document_id='5188377234380954537'>🌘</emoji> <b>{}</b>:"
-        ),
-        "single_cmd": "\n▫️ <code>{}{}</code> {}",
-        "undoc_cmd": "🦥 Нет описания",
-        "all_header": (
-            "<emoji document_id='5188377234380954537'>🌘</emoji> <b>{} модулей доступно,"
-            " {} скрыто:</b>"
-        ),
-        "mod_tmpl": "\n{} <code>{}</code>",
-        "first_cmd_tmpl": ": ( {}",
-        "cmd_tmpl": " | {}",
-        "no_mod": "🚫 <b>Укажи модуль(-и), которые нужно скрыть</b>",
-        "hidden_shown": (
-            "<emoji document_id='5188377234380954537'>🌘</emoji> <b>{} модулей скрыто,"
-            " {} модулей показано:</b>\n{}\n{}"
-        ),
-        "ihandler": "\n🎹 <code>{}</code> {}",
-        "undoc_ihandler": "🦥 Нет описания",
-        "support": (
-            "{} <b>Ссылка на </b><a href='https://t.me/hikka_talks'>чат помощи</a>"
-        ),
-        "_cls_doc": "Показывает помощь по модулям",
-        "partial_load": (
-            "<emoji document_id='5472105307985419058'>☝️</emoji> <b>Юзербот еще не"
-            " загрузился полностью, поэтому показаны не все модули</b>"
-        ),
-        "not_exact": (
-            "<emoji document_id='5472105307985419058'>☝️</emoji> <b>Точного совпадения"
-            " не нашлось, поэтому было выбрано наиболее подходящее</b>"
-        ),
-        "request_join": "Вы запросили ссылку на чат помощи Hikka",
+        "partial_load": "⚠️ <b>Userbot is not fully loaded, so not all modules are shown</b>",
+        "not_exact": "⚠️ <b>No exact match occured, so the closest result is shown instead</b>",
     }
 
     def __init__(self):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
                 "core_emoji",
-                "▪️",
+                "🌄",
                 lambda: "Core module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "hikka_emoji",
-                "🌘",
+                "🌄",
                 lambda: "Hikka-only module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "plain_emoji",
-                "▫️",
+                "🌄",
                 lambda: "Plain module bullet",
                 validator=loader.validators.String(length=1),
             ),
             loader.ConfigValue(
                 "empty_emoji",
-                "👁‍🗨",
+                "🌄",
                 lambda: "Empty modules bullet",
                 validator=loader.validators.String(length=1),
             ),
         )
 
-    @loader.command(
-        ru_doc=(
-            "<модуль или модули> - Спрятать модуль(-и) из помощи\n*Разделяй модули"
-            " пробелами"
-        )
-    )
-    async def helphide(self, message: Message):
+    async def hhcmd(self, message: Message):
         """<module or modules> - Hide module(-s) from help
         *Split modules by spaces"""
         modules = utils.get_args(message)
@@ -166,34 +99,40 @@ class HelpMod(loader.Module):
 
     async def modhelp(self, message: Message, args: str):
         exact = True
-        module = self.lookup(args)
+
+        try:
+            module = next(
+                mod
+                for mod in self.allmodules.modules
+                if mod.strings("name").lower() == args.lower()
+            )
+        except Exception:
+            module = None
 
         if not module:
-            _args = args.lower()
-            _args = _args[1:] if _args.startswith(self.get_prefix()) else _args
-            if _args in self.allmodules.commands:
-                module = self.allmodules.commands[_args].__self__
+            args = args.lower()
+            args = args[1:] if args.startswith(self.get_prefix()) else args
+            if args in self.allmodules.commands:
+                module = self.allmodules.commands[args].__self__
 
         if not module:
-            module = self.lookup(
-                next(
-                    (
-                        reversed(
-                            sorted(
-                                [
-                                    module.strings["name"]
-                                    for module in self.allmodules.modules
-                                ],
-                                key=lambda x: difflib.SequenceMatcher(
-                                    None,
-                                    args.lower(),
-                                    x,
-                                ).ratio(),
-                            )
-                        )
-                    ),
-                    None,
+            module_name = next(  # skipcq: PTC-W0063
+                reversed(
+                    sorted(
+                        [module.strings["name"] for module in self.allmodules.modules],
+                        key=lambda x: difflib.SequenceMatcher(
+                            None,
+                            args.lower(),
+                            x,
+                        ).ratio(),
+                    )
                 )
+            )
+
+            module = next(  # skipcq: PTC-W0063
+                module
+                for module in self.allmodules.modules
+                if module.strings["name"] == module_name
             )
 
             exact = False
@@ -203,15 +142,9 @@ class HelpMod(loader.Module):
         except KeyError:
             name = getattr(module, "name", "ERROR")
 
-        _name = (
-            f"{utils.escape_html(name)} (v{module.__version__[0]}.{module.__version__[1]}.{module.__version__[2]})"
-            if hasattr(module, "__version__")
-            else utils.escape_html(name)
-        )
-
-        reply = self.strings("single_mod_header").format(_name)
+        reply = self.strings("single_mod_header").format(utils.escape_html(name))
         if module.__doc__:
-            reply += "<i>\nℹ️ " + utils.escape_html(inspect.getdoc(module)) + "\n</i>"
+            reply += "\n<b>🌄 Info:</b> <i>" + utils.escape_html(inspect.getdoc(module)) + "\n</i>"
 
         commands = {
             name: func
@@ -242,12 +175,11 @@ class HelpMod(loader.Module):
             )
 
         await utils.answer(
-            message, f"{reply}\n\n{'' if exact else self.strings('not_exact')}"
+            message, f"{reply}\n\n{self.strings('not_exact') if not exact else ''}"
         )
 
     @loader.unrestricted
-    @loader.command(ru_doc="[модуль] [-f] - Показать помощь")
-    async def help(self, message: Message):
+    async def helpcmd(self, message: Message):
         """[module] [-f] - Show help"""
         args = utils.get_args_raw(message)
         force = False
@@ -269,7 +201,10 @@ class HelpMod(loader.Module):
 
         hidden = self.get("hide", [])
 
-        reply = self.strings("all_header").format(count, 0 if force else len(hidden))
+        reply = self.strings("all_header").format(
+            count,
+            len(hidden) if not force else 0,
+        )
         shown_warn = False
 
         plain_ = []
@@ -355,13 +290,13 @@ class HelpMod(loader.Module):
 
             for cmd in icommands:
                 if first:
-                    tmp += self.strings("first_cmd_tmpl").format(f"🎹 {cmd}")
+                    tmp += self.strings("first_cmd_tmpl").format(f"✿ {cmd}")
                     first = False
                 else:
-                    tmp += self.strings("cmd_tmpl").format(f"🎹 {cmd}")
+                    tmp += self.strings("cmd_tmpl").format(f"✿ {cmd}")
 
             if commands or icommands:
-                tmp += " )"
+                tmp += ""
                 if core:
                     core_ += [tmp]
                 elif inline:
@@ -369,42 +304,24 @@ class HelpMod(loader.Module):
                 else:
                     plain_ += [tmp]
             elif not shown_warn and (mod.commands or mod.inline_handlers):
-                reply = (
-                    "<i>You have permissions to execute only these"
-                    f" commands</i>\n{reply}"
-                )
+                reply = f"<i>You have permissions to execute only these commands</i>\n{reply}"
                 shown_warn = True
 
         plain_.sort(key=lambda x: x.split()[1])
         core_.sort(key=lambda x: x.split()[1])
         inline_.sort(key=lambda x: x.split()[1])
         no_commands_.sort(key=lambda x: x.split()[1])
-        no_commands_ = "".join(no_commands_) if force else ""
+        no_commands_ = "\n".join(no_commands_) if force else ""
 
         partial_load = (
-            ""
-            if self.lookup("Loader")._fully_loaded
-            else f"\n\n{self.strings('partial_load')}"
+            f"\n\n{self.strings('partial_load')}"
+            if not self.lookup("Loader")._fully_loaded
+            else ""
         )
 
+        umod_turn = f"\n\n🌉 <b>This is not a public «Help» module</b>"
+        um_tn = "\n<i>— Contact the creator of «Thomas» to become a «Premium» user!</i>"
         await utils.answer(
             message,
-            f"{reply}\n{''.join(core_)}{''.join(plain_)}{''.join(inline_)}{no_commands_}{partial_load}",
-        )
-
-    @loader.command(ru_doc="Показать ссылку на чат помощи Hikka")
-    async def support(self, message):
-        """Get link of Hikka support chat"""
-        if message.out:
-            await self.request_join("@hikka_talks", self.strings("request_join"))
-
-        await utils.answer(
-            message,
-            self.strings("support").format(
-                '<emoji document_id="5192765204898783881">🌘</emoji><emoji'
-                ' document_id="5195311729663286630">🌘</emoji><emoji'
-                ' document_id="5195045669324201904">🌘</emoji>'
-                if self._client.hikka_me.premium
-                else "🌘",
-            ),
+            f"{reply}\n{''.join(core_)}{''.join(plain_)}{''.join(inline_)}{no_commands_}{partial_load}{umod_turn}{um_tn}",
         )
