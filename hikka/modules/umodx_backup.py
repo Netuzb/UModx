@@ -20,12 +20,12 @@ from ..inline.types import InlineCall
 logger = logging.getLogger(__name__)
 
 soso = "◽ "
-premium = """◽ <b>«<u>Premium-Userbot</u>»</b> - ostonamizga xush kelibsiz! Temur akasi!
-◽ <b>«Maʼlumot oʻrnida»</b> - <u>premium-userbot</u> eng toza va xavfsizlik boʻyicha yuqori oʻrinlarni egallab kelayotganlaridan hisoblanadi.
+premium = """🌟 <b>«<u>UModx</u>»</b> - zamonaviy qatlamga xush kelibsiz!
+◽ <b>«Maʼlumot oʻrnida»</b> - <u>UModx</u> yangilanishlari sizga bildirishnoma orqali yetib keladi
 
-◽ <b>«Yaratuvchi hamda boshqaruvchi»</b> - Temur Erkinov - @netuzb
-◽ <b>«Rus tiliga oʻgirish uchun»</b> <code>.setlang ru</code>
-◽ <b>«Barcha modullar»</b> <code>.help</code>"""
+◽ .help - <b>barcha mavjud modullar</b>
+◽ /start - <b>yuzerbot haqida maʼlumot</b>
+◽ /modullar - <b>modullar doʻkoni</b>"""
 
 @loader.tds
 class BackupMod(loader.Module):
