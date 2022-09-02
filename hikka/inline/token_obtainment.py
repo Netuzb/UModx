@@ -1,28 +1,16 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import asyncio
 import io
 import logging
 import re
-
 import requests
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest
-
 from .. import utils
 from .types import InlineUnit
 
-logger = logging.getLogger(__name__)
-
 photo = io.BytesIO(
     requests.get(
-        "https://github.com/hikariatama/Hikka/raw/master/assets/bot_pfp.png"
+        "https://te.legra.ph/file/eca95f4035898ee660212.jpg"
     ).content
 )
 photo.name = "avatar.png"
@@ -56,14 +44,14 @@ class TokenObtainment(InlineUnit):
                 else:
                     # Generate and set random username for bot
                     uid = utils.rand(6)
-                    username = f"@hikka_{uid}_bot"
+                    username = f"@umodx_{uid}_bot"
             else:
                 # Generate and set random username for bot
                 uid = utils.rand(6)
-                username = f"@hikka_{uid}_bot"
+                username = f"@umodx_{uid}_bot"
 
             for msg in [
-                f"🌘 Hikka Userbot of {self._name}"[:64],
+                f"🔥 {self._name}"[:64],
                 username,
                 "/setuserpic",
                 username,
@@ -157,7 +145,7 @@ class TokenObtainment(InlineUnit):
                         "hikka.inline",
                         "custom_bot",
                         False,
-                    ) and not re.search(r"@hikka_[0-9a-zA-Z]{6}_bot", button.text):
+                    ) and not re.search(r"@umodx_[0-9a-zA-Z]{6}_bot", button.text):
                         continue
 
                     m = await conv.send_message(button.text)
