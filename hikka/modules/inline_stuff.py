@@ -10,10 +10,10 @@ from .. import loader, utils
 
 @loader.tds
 class InlineStuffMod(loader.Module):
-    """Provides support for inline stuff"""
+    """Bot almashtirish"""
 
     strings = {
-        "name": "InlineStuff",
+        "name": "NewBot",
         "bot_username_invalid": (
             "<emoji document_id='5415905755406539934'>🚫</emoji> <b>Xatolik yizaga keldi."
             " Username xato kiritilgan. Username soʻngida </b><code>bot</code><b> soʻzi"
