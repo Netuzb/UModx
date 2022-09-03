@@ -660,7 +660,7 @@ def get_named_platform() -> str:
 
 def get_platform_emoji() -> str:
     BASE = (
-        'UMODX'
+        '<emoji document_id="5456168015789824301">😁</emoji> UMODX'
     )
 
     if "OKTETO" in os.environ:
