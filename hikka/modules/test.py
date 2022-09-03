@@ -1,13 +1,3 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
-# scope: inline
-
 import inspect
 import logging
 import os
@@ -15,10 +5,8 @@ import random
 import time
 from io import BytesIO
 from typing import Union
-
 from telethon.tl.functions.channels import EditAdminRequest, InviteToChannelRequest
 from telethon.tl.types import ChatAdminRights, Message
-
 from .. import loader, main, utils
 from ..inline.types import InlineCall
 
@@ -41,7 +29,7 @@ class TestMod(loader.Module):
     _memory = {}
 
     strings = {
-        "name": "Tester",
+        "name": "Central",
         "set_loglevel": "🚫 <b>Please specify verbosity as an integer or string</b>",
         "no_logs": "ℹ️ <b>You don't have any logs at verbosity {}.</b>",
         "logs_filename": "hikka-logs.txt",
@@ -92,67 +80,6 @@ class TestMod(loader.Module):
         "heroku_debug": "🚫 <b>Debugging is not available on Heroku</b>",
     }
 
-    strings_ru = {
-        "set_loglevel": "🚫 <b>Укажи уровень логов числом или строкой</b>",
-        "no_logs": "ℹ️ <b>У тебя нет логов уровня {}.</b>",
-        "logs_filename": "hikka-logs.txt",
-        "logs_caption": (
-            "<emoji document_id='5188377234380954537'>🌘</emoji> <b>Логи Hikka уровня"
-            " </b><code>{}</code>\n\n<emoji document_id='5454390891466726015'>👋</emoji>"
-            " <b>Версия Hikka: {}.{}.{}</b>{}\n<emoji"
-            " document_id='6321050180095313397'>⏱</emoji> <b>Uptime:"
-            " {}</b>\n<b>{}</b>\n\n<b>{} NoNick</b>\n<b>{} Grep</b>\n<b>{}"
-            " InlineLogs</b>"
-        ),
-        "bad_module": "🚫 <b>Модуль не найден</b>",
-        "debugging_enabled": (
-            "🧑‍💻 <b>Режим разработчика включен для модуля"
-            " </b><code>{0}</code>\n<i>Отправляйся в директорию `debug_modules`,"
-            " изменяй файл `{0}.py`, и смотри изменения в режиме реального времени</i>"
-        ),
-        "debugging_disabled": "✅ <b>Режим разработчика выключен</b>",
-        "suspend_invalid_time": (
-            "<emoji document_id='5416024721705673488'>💀</emoji> <b>Неверное время"
-            " заморозки</b>"
-        ),
-        "suspended": (
-            "<emoji document_id='5452023368054216810'>🥶</emoji> <b>Бот заморожен на</b>"
-            " <code>{}</code> <b>секунд</b>"
-        ),
-        "results_ping": (
-            "<emoji document_id='6321050180095313397'>⏱</emoji> <b>Скорость отклика"
-            " Telegram:</b> <code>{}</code> <b>ms</b>\n<emoji"
-            " document_id='5377371691078916778'>😎</emoji> <b>Прошло с последней"
-            " перезагрузки: {}</b>"
-        ),
-        "ping_hint": (
-            "<emoji document_id='5472146462362048818'>💡</emoji> <i>Скорость отклика"
-            " Telegram в большей степени зависит от загруженности серверов Telegram и"
-            " других внешних факторов и никак не связана с параметрами сервера, на"
-            " который установлен юзербот</i>"
-        ),
-        "confidential": (
-            "⚠️ <b>Уровень логов </b><code>{}</code><b> может содержать личную"
-            " информацию, будь осторожен</b>"
-        ),
-        "confidential_text": (
-            "⚠️ <b>Уровень логов </b><code>{0}</code><b> может содержать личную"
-            " информацию, будь осторожен</b>\n<b>Напиши </b><code>.logs {0}"
-            " force_insecure</code><b>, чтобы отправить логи игнорируя"
-            " предупреждение</b>"
-        ),
-        "choose_loglevel": "💁‍♂️ <b>Выбери уровень логов</b>",
-        "_cmd_doc_dump": "Показать информацию о сообщении",
-        "_cmd_doc_logs": (
-            "<уровень> - Отправляет лог-файл. Уровни ниже WARNING могут содержать"
-            " личную инфомрацию."
-        ),
-        "_cmd_doc_suspend": "<время> - Заморозить бота на некоторое время",
-        "_cmd_doc_ping": "Проверяет скорость отклика юзербота",
-        "_cls_doc": "Операции, связанные с самотестированием",
-        "heroku_debug": "🚫 <b>Режим разработчика не доступен на Heroku</b>",
-    }
-
     def __init__(self):
         self.config = loader.ModuleConfig(
             loader.ConfigValue(
@@ -183,19 +110,6 @@ class TestMod(loader.Module):
     def _pass_config_to_logger(self):
         logging.getLogger().handlers[0].force_send_all = self.config["force_send_all"]
         logging.getLogger().handlers[0].tg_level = self.config["tglog_level"]
-
-    @loader.command(ru_doc="Ответь на сообщение, чтобы показать его дамп")
-    async def dump(self, message: Message):
-        """Use in reply to get a dump of a message"""
-        if not message.is_reply:
-            return
-
-        await utils.answer(
-            message,
-            "<code>"
-            + utils.escape_html((await message.get_reply_message()).stringify())
-            + "</code>",
-        )
 
     @loader.loop(interval=1)
     async def watchdog(self):
@@ -232,69 +146,6 @@ class TestMod(loader.Module):
         except Exception:
             logger.exception("Failed debugging watchdog")
             return
-
-    @loader.command(
-        ru_doc=(
-            "[модуль] - Для разработчиков: открыть модуль в режиме дебага и применять"
-            " изменения из него в режиме реального времени"
-        )
-    )
-    async def debugmod(self, message: Message):
-        """[module] - For developers: Open module for debugging
-        You will be able to track changes in real-time"""
-        if "DYNO" in os.environ:
-            await utils.answer(message, self.strings("heroku_debug"))
-            return
-
-        args = utils.get_args_raw(message)
-        instance = None
-        for module in self.allmodules.modules:
-            if (
-                module.__class__.__name__.lower() == args.lower()
-                or module.strings["name"].lower() == args.lower()
-            ):
-                if os.path.isfile(
-                    os.path.join(
-                        DEBUG_MODS_DIR,
-                        f"{module.__class__.__name__}.py",
-                    )
-                ):
-                    os.remove(
-                        os.path.join(
-                            DEBUG_MODS_DIR,
-                            f"{module.__class__.__name__}.py",
-                        )
-                    )
-
-                    try:
-                        delattr(module, "hikka_debug")
-                    except AttributeError:
-                        pass
-
-                    await utils.answer(message, self.strings("debugging_disabled"))
-                    return
-
-                module.hikka_debug = True
-                instance = module
-                break
-
-        if not instance:
-            await utils.answer(message, self.strings("bad_module"))
-            return
-
-        with open(
-            os.path.join(
-                DEBUG_MODS_DIR,
-                f"{instance.__class__.__name__}.py",
-            ),
-            "wb",
-        ) as f:
-            f.write(inspect.getmodule(instance).__loader__.data)
-
-        await utils.answer(
-            message,
-            self.strings("debugging_enabled").format(instance.__class__.__name__),
-        )
 
     @loader.command(ru_doc="<уровень> - Показать логи")
     async def logs(
@@ -496,20 +347,6 @@ class TestMod(loader.Module):
                 logs,
                 caption=self.strings("logs_caption").format(named_lvl, *other),
             )
-
-    @loader.owner
-    @loader.command(ru_doc="<время> - Заморозить бота на N секунд")
-    async def suspend(self, message: Message):
-        """<time> - Suspends the bot for N seconds"""
-        try:
-            time_sleep = float(utils.get_args_raw(message))
-            await utils.answer(
-                message,
-                self.strings("suspended").format(time_sleep),
-            )
-            time.sleep(time_sleep)
-        except ValueError:
-            await utils.answer(message, self.strings("suspend_invalid_time"))
 
     @loader.command(ru_doc="Проверить скорость отклика юзербота")
     async def ping(self, message: Message):
