@@ -1,11 +1,3 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import contextlib
 import copy
 import logging
@@ -230,9 +222,9 @@ class Form(InlineUnit):
                     (
                         utils.get_platform_emoji()
                         if self._client.hikka_me.premium and CUSTOM_EMOJIS
-                        else "🌘"
+                        else "🔥"
                     )
-                    + " <b>Loading inline form...</b>"
+                    + " <b>umodx inline...</b>"
                 )
             except Exception:
                 status_message = None
