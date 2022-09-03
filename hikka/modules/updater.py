@@ -20,8 +20,11 @@ from telethon.extensions.html import CUSTOM_EMOJIS
 from .. import loader, utils, heroku, main
 from ..inline.types import InlineCall
 
+logger = logging.getLogger(__name__)
+
+
 @loader.tds
-class UpdaterThomMod(loader.Module):
+class UpdaterMod(loader.Module):
     """Updates itself"""
 
     strings = {
