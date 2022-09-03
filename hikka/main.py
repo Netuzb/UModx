@@ -429,8 +429,8 @@ class Hikka:
 
     async def _web_banner(self):
         """Shows web banner"""
-        logging.info("✅ Web mode ready for configuration")
-        logging.info(f"🌐 Please visit {self.web.url}")
+        logging.info("✅ UMODX ISHGA TUSHIRILDI!")
+        logging.info(f"🔥 WEB MANZIL: {self.web.url}")
 
     async def wait_for_web_auth(self, token: str):
         """Waits for web auth confirmation in Telegram"""
@@ -458,7 +458,7 @@ class Hikka:
                     connection=self.conn,
                     proxy=self.proxy,
                     connection_retries=None,
-                    device_model="Hikka",
+                    device_model="UModx Userbot",
                 )
 
                 client.start(phone)
@@ -498,7 +498,7 @@ class Hikka:
                     connection=self.conn,
                     proxy=self.proxy,
                     connection_retries=None,
-                    device_model="Hikka",
+                    device_model="UModx Userbot",
                 )
 
                 client.start(phone=raise_auth if self.web else lambda: input("Phone: "))
