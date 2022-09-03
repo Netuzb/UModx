@@ -1,13 +1,3 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
-# scope: inline
-
 import ast
 import functools
 import logging
@@ -32,7 +22,7 @@ class HikkaConfigMod(loader.Module):
     """Interactive configurator for Hikka Userbot"""
 
     strings = {
-        "name": "HikkaConfig",
+        "name": "Configs",
         "choose_core": "🎚 <b>Choose a category</b>",
         "configure": "🎚 <b>Choose a module to configure</b>",
         "configure_lib": "🪴 <b>Choose a library to configure</b>",
