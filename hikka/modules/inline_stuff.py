@@ -15,17 +15,17 @@ class InlineStuffMod(loader.Module):
     strings = {
         "name": "InlineStuff",
         "bot_username_invalid": (
-            "<emoji document_id='5415905755406539934'>🚫</emoji> <b>Specified bot"
-            " username is invalid. It must end with </b><code>bot</code><b> and contain"
-            " at least 4 symbols</b>"
+            "<emoji document_id='5415905755406539934'>🚫</emoji> <b>Xatolik yizaga keldi."
+            " Username xato kiritilgan. Username soʻngida </b><code>bot</code><b> soʻzi"
+            " qatnashishi kerak</b>"
         ),
         "bot_username_occupied": (
-            "<emoji document_id='5415905755406539934'>🚫</emoji> <b>This username is"
-            " already occupied</b>"
+            "<emoji document_id='5415905755406539934'>🚫</emoji> <b>Bu username"
+            " ushbu soniyalarda band</b>"
         ),
         "bot_updated": (
-            "<emoji document_id='6318792204118656433'>🎉</emoji> <b>Config successfully"
-            " saved. Restart userbot to apply changes</b>"
+            "<emoji document_id='6318792204118656433'>🎉</emoji> <b>Muvoffaqiyatli bajarildi."
+            " Toʻliq amalga oshirilishi uchun restart qoʻllang</b>"
         ),
         "this_is_umodx": (
             "☕ <b>Salom!</b> — Bu <b>«UModx»</b> yuzerboti. Oʻrnatish uchun quyidagi manzillarga oʻting.\n\n"
@@ -99,8 +99,8 @@ class InlineStuffMod(loader.Module):
                     return True
 
     @loader.command(ru_doc="<юзернейм> - Изменить юзернейм инлайн бота")
-    async def ch_hikka_bot(self, message: Message):
-        """<username> - Change your Hikka inline bot username"""
+    async def newbot(self, message: Message):
+        """<username> - yangi bot yaratish"""
         args = utils.get_args_raw(message).strip("@")
         if (
             not args
