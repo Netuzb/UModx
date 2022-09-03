@@ -1,11 +1,3 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import asyncio
 import contextlib
 import copy
@@ -229,9 +221,9 @@ class Gallery(InlineUnit):
                     (
                         utils.get_platform_emoji()
                         if self._client.hikka_me.premium and CUSTOM_EMOJIS
-                        else "🌘"
+                        else "🔥"
                     )
-                    + " <b>Loading inline gallery...</b>"
+                    + " <b>umodx inline...</b>"
                 )
             except Exception:
                 status_message = None
@@ -572,7 +564,7 @@ class Gallery(InlineUnit):
                             *(
                                 [
                                     {
-                                        "text": "⏪",
+                                        "text": "back",
                                         "callback": callback,
                                         "args": (unit["current_index"] - 1,),
                                     }
@@ -583,9 +575,9 @@ class Gallery(InlineUnit):
                             *(
                                 [
                                     {
-                                        "text": "🛑"
+                                        "text": "stop"
                                         if unit.get("slideshow", False)
-                                        else "⏱",
+                                        else "slideshow",
                                         "callback": callback,
                                         "args": ("slideshow",),
                                     }
@@ -599,7 +591,7 @@ class Gallery(InlineUnit):
                             *(
                                 [
                                     {
-                                        "text": "⏩",
+                                        "text": "next",
                                         "callback": callback,
                                         "args": (unit["current_index"] + 1,),
                                     }
@@ -613,7 +605,7 @@ class Gallery(InlineUnit):
                         ]
                     ]
                 )
-                + [[{"text": "🔻 Close", "callback": callback, "args": ("close",)}]]
+                + [[{"text": "🔻 Yopish", "callback": callback, "args": ("close",)}]]
             )
         )
 
