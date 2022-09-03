@@ -61,7 +61,7 @@ class UpdaterMod(loader.Module):
         "no_update": "🚸 <b>You are on the latest version, pull updates anyway?</b>",
         "cancel": "🚫 Cancel",
         "full_success": (
-            "<emoji document_id="5456168015789824301">😁</emoji> <b>UMODX toʻliq"
+            "<emoji document_id='5456168015789824301'>😁</emoji> <b>UMODX toʻliq"
             " qayta yuklandi! {}</b>\n<i>Umumiy hisobda {} sekund</i>"
         ),
         "secure_boot_complete": (
