@@ -1,11 +1,3 @@
-#             █ █ ▀ █▄▀ ▄▀█ █▀█ ▀
-#             █▀█ █ █ █ █▀█ █▀▄ █
-#              © Copyright 2022
-#           https://t.me/hikariatama
-#
-# 🔒      Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import contextlib
 import json
 import logging
@@ -188,10 +180,10 @@ class Database(dict):
         try:
             self._assets, _ = await utils.asset_channel(
                 self._client,
-                "hikka-assets",
-                "🌆 Your Hikka assets will be stored here",
+                "🔥 umodx-assets",
+                "🔥 UModx resurslari jamlanadigan guruh",
                 archive=True,
-                avatar="https://raw.githubusercontent.com/hikariatama/assets/master/hikka-assets.png",
+                avatar="https://te.legra.ph/file/eca95f4035898ee660212.jpg",
             )
         except ChannelsTooMuchError:
             self._assets = None
