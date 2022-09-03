@@ -34,7 +34,7 @@ class SettingsMod(loader.Module):
     """UModx sozlamalari, umumiy hajmda"""
 
     strings = {
-        "name": "Sozlamalar",
+        "name": "Sets",
         "watchers": (
             "<emoji document_id='5424885441100782420'>👀</emoji>"
             " <b>Watchers:</b>\n\n<b>{}</b>"
