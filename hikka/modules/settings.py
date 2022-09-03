@@ -13,22 +13,6 @@ class CoreMod(loader.Module):
         "too_many_args": (
             "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Too many args</b>"
         ),
-        "blacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Chat {} blacklisted'
-            " from userbot</b>"
-        ),
-        "unblacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Chat {}'
-            " unblacklisted from userbot</b>"
-        ),
-        "user_blacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>User {} blacklisted'
-            " from userbot</b>"
-        ),
-        "user_unblacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>User {}'
-            " unblacklisted from userbot</b>"
-        ),
         "what_prefix": "❓ <b>What should the prefix be set to?</b>",
         "prefix_incorrect": (
             "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Prefix must be one"
@@ -67,146 +51,9 @@ class CoreMod(loader.Module):
         "db_cleared": (
             '<emoji document_id="5368324170671202286">👍</emoji><b> Database cleared</b>'
         ),
-        "hikka": (
-            "{}\n\n<emoji document_id='5406931726184225260'>🧐</emoji>"
-            " <b>Version: {}.{}.{}</b>\n<emoji"
-            " document_id='6318902906900711458'>🧱</emoji> <b>Build:"
-            " </b><i>{}</i>\n\n<emoji document_id='5454182070156794055'>⌨️</emoji>"
-            " <b>Developer: t.me/hikariatama</b>"
-        ),
-        "check_url": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>You need to specify"
-            " valid url containing a langpack</b>"
-        ),
-        "lang_saved": "{} <b>Language saved!</b>",
-        "pack_saved": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Translate pack'
-            " saved!</b>"
-        ),
-        "incorrect_language": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Incorrect language"
-            " specified</b>"
-        ),
-        "lang_removed": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Translations reset'
-            " to default ones</b>"
-        ),
-        "check_pack": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Invalid pack format"
-            " in url</b>"
-        ),
         "confirm_cleardb": "⚠️ <b>Are you sure, that you want to clear database?</b>",
         "cleardb_confirm": "🗑 Clear database",
         "cancel": "🚫 Cancel",
-        "who_to_blacklist": (
-            "<emoji document_id='5384612769716774600'>❓</emoji> <b>Who to"
-            " blacklist?</b>"
-        ),
-        "who_to_unblacklist": (
-            "<emoji document_id='5384612769716774600'>❓</emoji> <b>Who to"
-            " unblacklist?</b>"
-        ),
-    }
-
-    strings_ru = {
-        "too_many_args": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Слишком много"
-            " аргументов</b>"
-        ),
-        "blacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Чат {} добавлен в'
-            " черный список юзербота</b>"
-        ),
-        "unblacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Чат {} удален из'
-            " черного списка юзербота</b>"
-        ),
-        "user_blacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Пользователь {}'
-            " добавлен в черный список юзербота</b>"
-        ),
-        "user_unblacklisted": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Пользователь {}'
-            " удален из черного списка юзербота</b>"
-        ),
-        "what_prefix": "❓ <b>А какой префикс ставить то?</b>",
-        "prefix_incorrect": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Префикс должен"
-            " состоять только из одного символа</b>"
-        ),
-        "prefix_set": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Префикс обновлен.'
-            " Чтобы вернуть его, используй</b> <code>{newprefix}setprefix"
-            " {oldprefix}</code>"
-        ),
-        "alias_created": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Алиас создан.'
-            " Используй его через</b> <code>{}</code>"
-        ),
-        "aliases": "<b>🔗 Алиасы:</b>\n",
-        "no_command": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Команда</b>"
-            " <code>{}</code> <b>не существует</b>"
-        ),
-        "alias_args": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Требуется ввести"
-            " команду и алиас для нее</b>"
-        ),
-        "delalias_args": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Требуется имя"
-            " алиаса</b>"
-        ),
-        "alias_removed": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Алиас</b>'
-            " <code>{}</code> <b>удален</b>."
-        ),
-        "no_alias": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji><b> Алиас</b>"
-            " <code>{}</code> <b>не существует</b>"
-        ),
-        "db_cleared": (
-            '<emoji document_id="5368324170671202286">👍</emoji><b> База очищена</b>'
-        ),
-        "hikka": (
-            "{}\n\n<emoji document_id='5406931726184225260'>🧐</emoji>"
-            " <b>Версия: {}.{}.{}</b>\n<emoji"
-            " document_id='6318902906900711458'>🧱</emoji> <b>Сборка:"
-            " </b><i>{}</i>\n\n<emoji document_id='5454182070156794055'>⌨️</emoji>"
-            " <b>Developer: t.me/hikariatama</b>"
-        ),
-        "check_url": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Укажи правильную"
-            " ссылку, ведущую на пак с переводом</b>"
-        ),
-        "lang_saved": "{} <b>Язык сохранен!</b>",
-        "pack_saved": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Пак перевода'
-            " сохранен!</b>"
-        ),
-        "incorrect_language": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>Указан неверный"
-            " язык</b>"
-        ),
-        "lang_removed": (
-            '<emoji document_id="5368324170671202286">👍</emoji> <b>Переводы'
-            " сброшены</b>"
-        ),
-        "check_pack": (
-            "<emoji document_id='5436162517686557387'>🚫</emoji> <b>По ссылке находится"
-            " неправильный пак</b>"
-        ),
-        "_cls_doc": "Управление базовыми настройками юзербота",
-        "confirm_cleardb": "⚠️ <b>Вы уверены, что хотите сбросить базу данных?</b>",
-        "cleardb_confirm": "🗑 Очистить базу",
-        "cancel": "🚫 Отмена",
-        "who_to_blacklist": (
-            "<emoji document_id='5384612769716774600'>❓</emoji> <b>Кого заблокировать"
-            " то?</b>"
-        ),
-        "who_to_unblacklist": (
-            "<emoji document_id='5384612769716774600'>❓</emoji> <b>Кого разблокировать"
-            " то?</b>"
-        ),
     }
 
     async def blacklistcommon(self, message: Message):
@@ -234,56 +81,6 @@ class CoreMod(loader.Module):
         module = self.allmodules.get_classname(module)
         return f"{str(chatid)}.{module}" if module else chatid
 
-    @loader.command(ru_doc="Показать версию Hikka")
-    async def hikkacmd(self, message: Message):
-        """Get Hikka version"""
-        await utils.answer(
-            message,
-            self.strings("hikka").format(
-                (
-                    utils.get_platform_emoji()
-                    + (
-                        '<emoji document_id="5192756799647785066">✌️</emoji><emoji'
-                        ' document_id="5193117564015747203">✌️</emoji><emoji'
-                        ' document_id="5195050806105087456">✌️</emoji><emoji'
-                        ' document_id="5195457642587233944">✌️</emoji>'
-                        if "LAVHOST" in os.environ
-                        else ""
-                    )
-                )
-                if self._client.hikka_me.premium and CUSTOM_EMOJIS
-                else "🌘 <b>Hikka userbot</b>",
-                *main.__version__,
-                utils.get_commit_url(),
-            ),
-        )
-
-    @loader.command(ru_doc="[чат] [модуль] - Отключить бота где-либо")
-    async def blacklist(self, message: Message):
-        """[chat_id] [module] - Blacklist the bot from operating somewhere"""
-        chatid = await self.blacklistcommon(message)
-
-        self._db.set(
-            main.__name__,
-            "blacklist_chats",
-            self._db.get(main.__name__, "blacklist_chats", []) + [chatid],
-        )
-
-        await utils.answer(message, self.strings("blacklisted").format(chatid))
-
-    @loader.command(ru_doc="[чат] - Включить бота где-либо")
-    async def unblacklist(self, message: Message):
-        """<chat_id> - Unblacklist the bot from operating somewhere"""
-        chatid = await self.blacklistcommon(message)
-
-        self._db.set(
-            main.__name__,
-            "blacklist_chats",
-            list(set(self._db.get(main.__name__, "blacklist_chats", [])) - {chatid}),
-        )
-
-        await utils.answer(message, self.strings("unblacklisted").format(chatid))
-
     async def getuser(self, message: Message):
         try:
             return int(utils.get_args(message)[0])
@@ -294,43 +91,6 @@ class CoreMod(loader.Module):
                 return reply.sender_id
 
             return message.to_id.user_id if message.is_private else False
-
-    @loader.command(ru_doc="[пользователь] - Запретить пользователю выполнять команды")
-    async def blacklistuser(self, message: Message):
-        """[user_id] - Prevent this user from running any commands"""
-        user = await self.getuser(message)
-
-        if not user:
-            await utils.answer(message, self.strings("who_to_blacklist"))
-            return
-
-        self._db.set(
-            main.__name__,
-            "blacklist_users",
-            self._db.get(main.__name__, "blacklist_users", []) + [user],
-        )
-
-        await utils.answer(message, self.strings("user_blacklisted").format(user))
-
-    @loader.command(ru_doc="[пользователь] - Разрешить пользователю выполнять команды")
-    async def unblacklistuser(self, message: Message):
-        """[user_id] - Allow this user to run permitted commands"""
-        user = await self.getuser(message)
-
-        if not user:
-            await utils.answer(message, self.strings("who_to_unblacklist"))
-            return
-
-        self._db.set(
-            main.__name__,
-            "blacklist_users",
-            list(set(self._db.get(main.__name__, "blacklist_users", [])) - {user}),
-        )
-
-        await utils.answer(
-            message,
-            self.strings("user_unblacklisted").format(user),
-        )
 
     @loader.owner
     @loader.command(ru_doc="<префикс> - Установить префикс команд")
@@ -424,52 +184,6 @@ class CoreMod(loader.Module):
         await utils.answer(
             message,
             self.strings("alias_removed").format(utils.escape_html(alias)),
-        )
-
-    @loader.command(ru_doc="[ссылка на пак] - Изменить внешний пак перевода")
-    async def dllangpackcmd(self, message: Message):
-        """[link to a langpack | empty to remove] - Change Hikka translate pack (external)"""
-        args = utils.get_args_raw(message)
-
-        if not args:
-            self._db.set(translations.__name__, "pack", False)
-            await self.translator.init()
-            await utils.answer(message, self.strings("lang_removed"))
-            return
-
-        if not utils.check_url(args):
-            await utils.answer(message, self.strings("check_url"))
-            return
-
-        self._db.set(translations.__name__, "pack", args)
-        success = await self.translator.init()
-        await utils.answer(
-            message, self.strings("pack_saved" if success else "check_pack")
-        )
-
-    @loader.command(ru_doc="[языки] - Изменить стандартный язык")
-    async def setlang(self, message: Message):
-        """[languages in the order of priority] - Change default language"""
-        args = utils.get_args_raw(message)
-        if not args or any(len(i) != 2 for i in args.split(" ")):
-            await utils.answer(message, self.strings("incorrect_language"))
-            return
-
-        self._db.set(translations.__name__, "lang", args.lower())
-        await self.translator.init()
-
-        await utils.answer(
-            message,
-            self.strings("lang_saved").format(
-                "".join(
-                    [
-                        utils.get_lang_flag(
-                            lang.lower() if lang.lower() != "en" else "gb"
-                        )
-                        for lang in args.lower().split(" ")
-                    ]
-                )
-            ),
         )
 
     @loader.owner
