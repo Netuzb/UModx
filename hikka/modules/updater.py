@@ -34,8 +34,8 @@ class UpdaterMod(loader.Module):
             " from</b> <a href='{}'>here</a>"
         ),
         "restarting_caption": (
-            "<emoji document_id='6318970114548958978'>🕗</emoji> <b>Your {} is"
-            " restarting...</b>"
+            "<emoji document_id='6318970114548958978'>🕗</emoji> <b>UModx <a href='{}'></a>"
+            " restart...</b>"
         ),
         "downloading": (
             "<emoji document_id='6318970114548958978'>🕗</emoji> <b>Yuklanmoqda"
