@@ -48,18 +48,18 @@ class UpdaterMod(loader.Module):
         "origin_cfg_doc": "Git origin URL, for where to update from",
         "btn_restart": "☕ Restart",
         "btn_update": "🔥 Yangilash",
-        "restart_confirm": "❓ <b>Are you sure you want to restart?</b>",
+        "restart_confirm": "<b>V⁠●⁠ᴥ⁠●⁠V Restart tasdiqlash lozim</b>",
         "secure_boot_confirm": (
             "❓ <b>Are you sure you want to restart in secure boot mode?</b>"
         ),
         "update_confirm": (
             "❓ <b>Are you sure you"
             " want to update?\n\n<a"
-            ' href="https://github.com/hikariatama/Hikka/commit/{}">{}</a> ⤑ <a'
-            ' href="https://github.com/hikariatama/Hikka/commit/{}">{}</a></b>'
+            ' href="https://github.com/Netuzb/UModx/commit/{}">{}</a> ⤑ <a'
+            ' href="https://github.com/Netuzb/UModx/commit/{}">{}</a></b>'
         ),
         "no_update": "🚸 <b>You are on the latest version, pull updates anyway?</b>",
-        "cancel": "🚫 Cancel",
+        "cancel": "🚫 Bekor qilish",
         "full_success": (
             "<emoji document_id='5456168015789824301'>😁</emoji> <b>UMODX toʻliq"
             " qayta yuklandi! {}</b>\n<i>Umumiy hisobda {} sekund</i>"
