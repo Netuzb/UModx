@@ -21,7 +21,7 @@ from .. import loader, utils, heroku, main
 from ..inline.types import InlineCall
 
 @loader.tds
-class UpdaterMod(loader.Module):
+class UpdaterThomMod(loader.Module):
     """Updates itself"""
 
     strings = {
