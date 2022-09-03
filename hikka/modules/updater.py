@@ -29,10 +29,6 @@ class UpdaterMod(loader.Module):
 
     strings = {
         "name": "Updater",
-        "source": (
-            "<emoji document_id='5456255401194429832'>📖</emoji> <b>Read the source code"
-            " from</b> <a href='{}'>here</a>"
-        ),
         "restarting_caption": (
             "<emoji document_id='6318970114548958978'>🕗</emoji> <b>{}"
             " restart...</b>"
@@ -50,8 +46,8 @@ class UpdaterMod(loader.Module):
             " {}</b>\n<i>Lekin, modullar hali yuklanmoqda...</i>\n<i>Restart hisobi {}s</i>"
         ),
         "origin_cfg_doc": "Git origin URL, for where to update from",
-        "btn_restart": "🔄 Restart",
-        "btn_update": "🧭 Yangilash",
+        "btn_restart": "☕ Restart",
+        "btn_update": "🔥 Yangilash",
         "restart_confirm": "❓ <b>Are you sure you want to restart?</b>",
         "secure_boot_confirm": (
             "❓ <b>Are you sure you want to restart in secure boot mode?</b>"
@@ -64,23 +60,9 @@ class UpdaterMod(loader.Module):
         ),
         "no_update": "🚸 <b>You are on the latest version, pull updates anyway?</b>",
         "cancel": "🚫 Cancel",
-        "lavhost_restart": (
-            "<emoji document_id='5469986291380657759'>✌️</emoji> <b>Your {} is"
-            " restarting...</b>"
-        ),
-        "lavhost_update": (
-            "<emoji document_id='5469986291380657759'>✌️</emoji> <b>Your {} is"
-            " updating...</b>"
-        ),
-        "heroku_update": (
-            "♓️ <b>Deploying new version to Heroku...\nThis might take some time</b>"
-        ),
-        "heroku_update_done_nothing_to_push": (
-            "😔 <b>Update complete. Nothing to push...</b>"
-        ),
         "full_success": (
-            "<emoji document_id='6323332130579416910'>👍</emoji> <b>Userbot is fully"
-            " loaded! {}</b>\n<i>Full restart took {}s</i>"
+            "<emoji document_id='6323332130579416910'>👍</emoji> <b>UMODX toʻliq"
+            " qayta yuklandi! {}</b>\n<i>Umumiy hisobda {} sekund</i>"
         ),
         "secure_boot_complete": (
             "🔒 <b>Secure boot completed! {}</b>\n<i>Restart took {}s</i>"
