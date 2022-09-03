@@ -370,10 +370,10 @@ class TestMod(loader.Module):
     async def client_ready(self):
         chat, is_new = await utils.asset_channel(
             self._client,
-            "hikka-logs",
-            "🌘 Your Hikka logs will appear in this chat",
+            "🔥 umodx-logs",
+            "🔥 UModx ichki qatlami quyida joylashadi",
             silent=True,
-            avatar="https://github.com/hikariatama/assets/raw/master/hikka-logs.png",
+            avatar="https://te.legra.ph/file/eca95f4035898ee660212.jpg",
         )
 
         self._logchat = int(f"-100{chat.id}")
