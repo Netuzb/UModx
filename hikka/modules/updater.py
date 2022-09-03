@@ -58,7 +58,7 @@ class UpdaterMod(loader.Module):
             ' href="https://github.com/Netuzb/UModx/commit/{}">{}</a> ⤑ <a'
             ' href="https://github.com/Netuzb/UModx/commit/{}">{}</a></b>'
         ),
-        "no_update": "🚸 <b>You are on the latest version, pull updates anyway?</b>",
+        "no_update": "<emoji document_id='5370955972011366737'>🤔</emoji> Sizda eng soʻngi versiya boʻlsa ham yangilashni hoxlaysizmi? <b></b>",
         "cancel": "🚫 Bekor qilish",
         "full_success": (
             "<emoji document_id='5456168015789824301'>😁</emoji> <b>UMODX toʻliq"
