@@ -30,11 +30,11 @@ def restart(*argv):
 
 
 @loader.tds
-class HikkaSettingsMod(loader.Module):
-    """Advanced settings for Hikka Userbot"""
+class SettingsMod(loader.Module):
+    """UModx sozlamalari, umumiy hajmda"""
 
     strings = {
-        "name": "HikkaSettings",
+        "name": "Sozlamalar",
         "watchers": (
             "<emoji document_id='5424885441100782420'>👀</emoji>"
             " <b>Watchers:</b>\n\n<b>{}</b>"
@@ -148,11 +148,11 @@ class HikkaSettingsMod(loader.Module):
             " recommended to run it in public group chats. Consider using it in <a"
             " href='tg://openmessage?user_id={}'>Saved messages</a>.</b>"
         ),
-        "opening_tunnel": "🔁 <b>Opening tunnel to Hikka web interface...</b>",
-        "tunnel_opened": "🎉 <b>Tunnel opened. This link is valid for about 1 hour</b>",
-        "web_btn": "🌍 Web interface",
+        "opening_tunnel": "🔁 <b>«UModx» web interfeys yaratilmoqda...</b>",
+        "tunnel_opened": "🎉 <b>«UModx» sizning xususiy web sahifa yaratildi</b>",
+        "web_btn": "🌍 Web Interfeys koʻrish",
         "btn_yes": "🚸 Open anyway",
-        "btn_no": "🔻 Cancel",
+        "btn_no": "🔻 Bekor qilish",
         "lavhost_web": (
             "✌️ <b>This link leads to your Hikka web interface on lavHost</b>\n\n<i>💡"
             " You'll need to authorize using lavHost credentials, specified on"
@@ -600,19 +600,9 @@ class HikkaSettingsMod(loader.Module):
         ]
 
     @loader.owner
-    @loader.command(ru_doc="Показать настройки")
-    async def settings(self, message: Message):
-        """Show settings menu"""
-        await self.inline.form(
-            self.strings("inline_settings"),
-            message=message,
-            reply_markup=self._get_settings_markup(),
-        )
-
-    @loader.owner
-    @loader.command(ru_doc="Открыть тоннель к веб-интерфейсу Hikka")
+    @loader.command(ru_doc="Открыть тоннель к веб-интерфейсу UModx")
     async def weburl(self, message: Message, force: bool = False):
-        """Opens web tunnel to your Hikka web interface"""
+        """UModx web interfeysni yaratish"""
         if "LAVHOST" in os.environ:
             form = await self.inline.form(
                 self.strings("lavhost_web"),
@@ -621,7 +611,7 @@ class HikkaSettingsMod(loader.Module):
                     "text": self.strings("web_btn"),
                     "url": await main.hikka.web.get_url(proxy_pass=False),
                 },
-                gif="https://t.me/hikari_assets/28",
+                gif="https://t.me/anonyusa/138",
             )
             return
 
@@ -642,7 +632,7 @@ class HikkaSettingsMod(loader.Module):
                         },
                         {"text": self.strings("btn_no"), "action": "close"},
                     ],
-                    gif="https://i.gifer.com/embedded/download/Z5tS.gif",
+                    gif="https://t.me/anonyusa/138",
                 ):
                     raise Exception
             except Exception:
@@ -660,18 +650,18 @@ class HikkaSettingsMod(loader.Module):
             form = message
             await form.edit(
                 self.strings("opening_tunnel"),
-                reply_markup={"text": "🕔 Wait...", "data": "empty"},
+                reply_markup={"text": "🕔 Kuting...", "data": "empty"},
                 gif=(
-                    "https://i.gifer.com/origin/e4/e43e1b221fd960003dc27d2f2f1b8ce1.gif"
+                    "https://t.me/anonyusa/138"
                 ),
             )
         else:
             form = await self.inline.form(
                 self.strings("opening_tunnel"),
                 message=message,
-                reply_markup={"text": "🕔 Wait...", "data": "empty"},
+                reply_markup={"text": "🕔 Kuting...", "data": "empty"},
                 gif=(
-                    "https://i.gifer.com/origin/e4/e43e1b221fd960003dc27d2f2f1b8ce1.gif"
+                    "https://t.me/anonyusa/138"
                 ),
             )
 
@@ -680,7 +670,7 @@ class HikkaSettingsMod(loader.Module):
         await form.edit(
             self.strings("tunnel_opened"),
             reply_markup={"text": self.strings("web_btn"), "url": url},
-            gif="https://t.me/hikari_assets/28",
+            gif="https://t.me/anonyusa/138",
         )
 
     @loader.loop(interval=1, autostart=True)
