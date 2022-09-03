@@ -1,12 +1,5 @@
 __version__ = (2, 1, 4)
 
-#            ▀█▀ █ █ █▀█ █▀▄▀█ ▄▀█ █▀
-#             █  █▀█ █▄█ █ ▀ █ █▀█ ▄█  
-#             https://t.me/netuzb
-#
-# 🔒 Licensed under the GNU AGPLv3
-# 🌐 https://www.gnu.org/licenses/agpl-3.0.html
-
 import asyncio
 import datetime
 import io
@@ -70,8 +63,8 @@ class BackupMod(loader.Module):
 
         self._backup_channel, _ = await utils.asset_channel(
             self._client,
-            "Premium",
-            ".",
+            "🔥 umodx-backup",
+            "🔥 UModx backup axlatlari guruhi",
             silent=True,
             archive=True,
             avatar="https://te.legra.ph/file/eca95f4035898ee660212.jpg",
