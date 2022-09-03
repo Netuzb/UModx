@@ -30,7 +30,7 @@ class UpdaterMod(loader.Module):
     strings = {
         "name": "Updater",
         "restarting_caption": (
-            "<emoji document_id='6318970114548958978'>🕗</emoji> <b>{}"
+            " <b>{}"
             " restart...</b>"
         ),
         "downloading": (
